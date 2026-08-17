@@ -20,12 +20,14 @@ export default async function handler(req, res) {
   try {
     const prompt = `You are an expert career counselor and resume analyzer. Analyze the provided CV, identify strengths, address any career gaps constructively, suggest transferable skills, and recommend 3-5 suitable career paths or job roles. Return clear and actionable feedback.\n\nCV Content:\n${cvText}`;
 
+    const cleanKey = apiKey.trim();
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey.trim()}`,
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'x-goog-api-key': cleanKey
         },
         body: JSON.stringify({
           contents: [
