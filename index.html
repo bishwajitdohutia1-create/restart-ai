@@ -11,6 +11,7 @@
     .custom-scroll::-webkit-scrollbar { width: 6px; }
     .custom-scroll::-webkit-scrollbar-track { background: #0b1526; }
     .custom-scroll::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+    #suggestionsBox { max-height: 150px; overflow-y: auto; z-index: 100; }
   </style>
 </head>
 <body class="min-h-screen pb-20">
@@ -43,7 +44,7 @@
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h2>
       <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Complete profile builder with education & visa status, ATS-friendly CV maker with instant copy functionality, advanced worldwide job discovery with filters, and verified company ledgers.
+        Complete profile builder with education & visa status, ATS-friendly CV maker with instant copy functionality, advanced worldwide job discovery with live auto-suggestions, and verified company ledgers.
       </p>
     </section>
 
@@ -157,7 +158,7 @@
       </div>
     </section>
 
-    <!-- 3. Advanced Worldwide Job Search Section with Dynamic Datalist -->
+    <!-- 3. Advanced Worldwide Job Search Section with Live JS Suggestions -->
     <section id="jobsSection" class="bg-slate-900 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h3 class="text-xl font-bold text-white">Advanced Worldwide Job Discovery</h3>
@@ -193,21 +194,13 @@
         </select>
       </div>
 
-      <div class="flex flex-col md:flex-row gap-3">
-        <input type="text" id="locationSearch" list="worldCities" placeholder="🌍 Type any location (e.g. Guwahati, London, New York)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs">
-        <datalist id="worldCities">
-          <option value="Guwahati, Assam, India">
-          <option value="Tinsukia, Assam, India">
-          <option value="Dibrugarh, Assam, India">
-          <option value="Gangtok, Sikkim, India">
-          <option value="Shillong, Meghalaya, India">
-          <option value="Delhi, India">
-          <option value="Bangalore, India">
-          <option value="London, United Kingdom">
-          <option value="New York, United States">
-          <option value="Singapore">
-          <option value="Remote / Worldwide">
-        </datalist>
+      <!-- Location Search with Custom Live Dropdown -->
+      <div class="relative flex flex-col md:flex-row gap-3">
+        <div class="relative w-full">
+          <input type="text" id="locationSearch" oninput="showSuggestions(this.value)" placeholder="🌍 Type any location (e.g. Guwahati, London, New York)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-cyan-400" autocomplete="off">
+          <!-- Custom Dropdown Suggestions Box -->
+          <div id="suggestionsBox" class="absolute left-0 right-0 mt-1 bg-slate-950 border border-slate-700 rounded-xl shadow-2xl hidden"></div>
+        </div>
         <button onclick="searchGlobalJobs()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold px-8 py-3 rounded-xl transition text-xs">Search Now</button>
       </div>
 
@@ -250,6 +243,40 @@
   </main>
 
   <script>
+    const globalCities = [
+      "Guwahati, Assam, India",
+      "Tinsukia, Assam, India",
+      "Dibrugarh, Assam, India",
+      "Gangtok, Sikkim, India",
+      "Shillong, Meghalaya, India",
+      "Delhi, India",
+      "Bangalore, India",
+      "London, United Kingdom",
+      "New York, United States",
+      "Singapore",
+      "Remote / Worldwide"
+    ];
+
+    function showSuggestions(val) {
+      const box = document.getElementById('suggestionsBox');
+      if (!val) {
+        box.classList.add('hidden');
+        return;
+      }
+      const filtered = globalCities.filter(c => c.toLowerCase().includes(val.toLowerCase()));
+      if (filtered.length > 0) {
+        box.innerHTML = filtered.map(c => `<div onclick="selectCity('${c}')" class="p-2 hover:bg-slate-900 cursor-pointer text-slate-300 text-xs">${c}</div>`).join('');
+        box.classList.remove('hidden');
+      } else {
+        box.classList.add('hidden');
+      }
+    }
+
+    function selectCity(city) {
+      document.getElementById('locationSearch').value = city;
+      document.getElementById('suggestionsBox').classList.add('hidden');
+    }
+
     function saveCompleteProfile(e) {
       e.preventDefault();
       const profile = {
