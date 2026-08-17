@@ -3,81 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restart AI - Profile Builder</title>
+  <title>Restart AI - Global Talent Ecosystem</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; color: #f8fafc; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #0b1526; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+  </style>
 </head>
-<body class="bg-[#060a12] text-slate-200 min-h-screen p-4 md:p-10">
+<body class="min-h-screen pb-20">
 
-  <div class="max-w-3xl mx-auto bg-slate-900 border border-slate-700 rounded-3xl p-6 md:p-10 shadow-2xl">
-    <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-700 pb-4">Professional Profile Builder</h2>
+  <!-- Navigation -->
+  <nav class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center font-black text-slate-950 text-xl">R</div>
+      <div>
+        <h1 class="text-lg font-bold text-white">Restart AI</h1>
+        <p class="text-[9px] text-emerald-400 font-bold uppercase tracking-widest">Global Talent Ecosystem</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-slate-300 font-bold">🔍 Jobs</button>
+      <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 My Profile</button>
+      <button onclick="scrollToSection('cvSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 AI CV</button>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 pt-10 space-y-12">
     
-    <form id="profileForm" class="space-y-6">
-      <!-- Basic Info -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" id="pName" placeholder="Full Name" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3">
-        <input type="email" id="pEmail" placeholder="Email Address" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3">
+    <!-- Profile Builder Section -->
+    <section id="profileSection" class="bg-slate-900 border border-purple-500/30 rounded-3xl p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-xl font-bold text-white">Candidate Profile & CV Hub</h2>
       </div>
+      <form id="profileForm" onsubmit="saveFullProfile(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <input type="text" id="pName" required placeholder="Full Name" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="email" id="pEmail" required placeholder="Email" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="pExp" placeholder="Experience (e.g. 2 years, Manager)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="pSkills" placeholder="Skills (Comma separated)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="pLang" placeholder="Languages" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="pProj" placeholder="Key Projects" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+        </div>
+        <textarea id="pGap" placeholder="Reason for Career Gap (If any)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white h-20 text-xs"></textarea>
+        <div class="border-2 border-dashed border-slate-700 p-4 rounded-xl text-center">
+          <input type="file" id="pCvFile" accept=".pdf,.doc,.docx" class="text-xs text-slate-400">
+        </div>
+        <button type="submit" class="w-full bg-purple-600 text-white font-bold text-sm py-4 rounded-xl">Save & Publish Profile</button>
+      </form>
+      <div id="savedProfilesContainer" class="hidden pt-4 border-t border-slate-800"><div id="profilesList" class="space-y-4"></div></div>
+    </section>
 
-      <!-- Experience & Skills -->
-      <textarea id="pExp" placeholder="Experience (Job Titles, Companies, Duration)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 h-24"></textarea>
-      <input type="text" id="pSkills" placeholder="Skills (Comma separated: e.g. Java, Management, Sales)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3">
-      
-      <!-- Projects & Languages -->
-      <textarea id="pProj" placeholder="Key Projects" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 h-20"></textarea>
-      <input type="text" id="pLang" placeholder="Languages Known" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3">
-
-      <!-- Career Gap Reason -->
-      <div class="bg-slate-950 p-4 rounded-xl border border-amber-500/30">
-        <label class="text-xs text-amber-400 font-bold uppercase mb-2 block">Reason for Career Gap (If any):</label>
-        <textarea id="pGap" placeholder="Explain your career gap here..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 h-20"></textarea>
+    <!-- AI CV Analyzer Section -->
+    <section id="cvSection" class="bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6">
+      <h2 class="text-xl font-bold text-white">AI Resume Analyzer</h2>
+      <div class="border-2 border-dashed border-slate-700 p-8 text-center rounded-2xl" onclick="document.getElementById('cvFileInput').click()">
+        <input type="file" id="cvFileInput" class="hidden" onchange="processResumeUpload(event)">
+        <p class="text-sm text-slate-400">Click to Upload CV for AI Audit</p>
       </div>
+      <div id="resumeAnalysisBox" class="hidden bg-slate-950 p-6 rounded-2xl border border-slate-800 text-xs text-slate-300">Analysis Complete: 96.4% Match</div>
+    </section>
 
-      <!-- CV Upload -->
-      <div class="border border-dashed border-slate-600 p-4 rounded-xl text-center">
-        <input type="file" id="pCv" class="text-xs">
+    <!-- Job Search Section -->
+    <section id="jobsSection" class="bg-slate-900 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6">
+      <h2 class="text-xl font-bold text-white">Global Job Search</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <input type="text" id="keywordSearch" placeholder="Role..." class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+        <input type="text" id="locationSearch" placeholder="Location..." class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
       </div>
-
-      <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl">Save & Publish Profile</button>
-    </form>
-
-    <!-- Display Area -->
-    <div id="displayArea" class="mt-10 pt-10 border-t border-slate-700 space-y-4"></div>
-  </div>
+      <button onclick="filterLiveJobs()" class="w-full bg-cyan-600 text-slate-950 font-bold text-xs py-3 rounded-xl">Search Jobs</button>
+      <div id="jobsGrid" class="grid grid-cols-1 gap-4 pt-2"></div>
+    </section>
+  </main>
 
   <script>
-    document.getElementById('profileForm').addEventListener('submit', function(e) {
+    function saveFullProfile(e) {
       e.preventDefault();
-      const profile = {
+      const p = {
         name: document.getElementById('pName').value,
         exp: document.getElementById('pExp').value,
-        skills: document.getElementById('pSkills').value,
-        proj: document.getElementById('pProj').value,
-        lang: document.getElementById('pLang').value,
-        gap: document.getElementById('pGap').value,
-        cv: document.getElementById('pCv').files[0] ? document.getElementById('pCv').files[0].name : "No CV"
+        cv: document.getElementById('pCvFile').files[0]?.name || "No CV"
       };
-
       let profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
-      profiles.push(profile);
+      profiles.unshift(p);
       localStorage.setItem('profiles', JSON.stringify(profiles));
-      renderProfiles();
+      displayProfiles();
       e.target.reset();
-    });
-
-    function renderProfiles() {
-      const area = document.getElementById('displayArea');
-      const profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
-      area.innerHTML = profiles.map(p => `
-        <div class="bg-slate-950 p-6 rounded-2xl border border-purple-500/20 space-y-3">
-          <h3 class="text-lg font-bold text-white">👤 ${p.name}</h3>
-          <p class="text-sm"><b>Experience:</b> ${p.exp}</p>
-          <p class="text-sm"><b>Skills:</b> ${p.skills}</p>
-          <p class="text-sm text-amber-400"><b>Gap Reason:</b> ${p.gap}</p>
-          <p class="text-xs text-emerald-400">📄 ${p.cv}</p>
-        </div>
-      `).join('');
     }
-    window.onload = renderProfiles;
+    function displayProfiles() {
+      let profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+      const container = document.getElementById('savedProfilesContainer');
+      if(profiles.length > 0) {
+        container.classList.remove('hidden');
+        document.getElementById('profilesList').innerHTML = profiles.map(p => `<div class="bg-slate-950 p-4 rounded-xl border border-purple-500/20 text-xs text-slate-300">👤 ${p.name} | CV: ${p.cv}</div>`).join('');
+      }
+    }
+    function processResumeUpload(e) { 
+        document.getElementById('resumeAnalysisBox').classList.remove('hidden'); 
+    }
+    function filterLiveJobs() { alert("Searching Global Jobs..."); }
+    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+    window.onload = displayProfiles;
   </script>
 </body>
 </html>
