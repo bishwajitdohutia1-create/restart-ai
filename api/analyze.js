@@ -9,47 +9,43 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'CV text is required' });
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
     return res.status(500).json({
-      error: 'OpenAI API Key is missing in Vercel settings.'
+      error: 'Gemini API Key is missing in Vercel settings.'
     });
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey.trim()}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [
-          {
-            role: 'system',
-            content:
-              'You are an expert career counselor and resume analyzer. Analyze the provided CV, identify strengths, address any career gaps constructively, suggest transferable skills, and recommend 3-5 suitable career paths or job roles. Return clear and actionable feedback.'
-          },
-          {
-            role: 'user',
-            content: `Please analyze this CV / Career background:\n\n${cvText}`
-          }
-        ],
-        temperature: 0.7
-      })
-    });
+    const prompt = `You are an expert career counselor and resume analyzer. Analyze the provided CV, identify strengths, address any career gaps constructively, suggest transferable skills, and recommend 3-5 suitable career paths or job roles. Return clear and actionable feedback.\n\nCV Content:\n${cvText}`;
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey.trim()}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: prompt }]
+            }
+          ]
+        })
+      }
+    );
 
     const data = await response.json();
 
     if (!response.ok) {
       return res.status(response.status).json({
-        error: data.error?.message || 'Failed to analyze CV with OpenAI'
+        error: data.error?.message || 'Failed to analyze CV with Gemini'
       });
     }
 
-    const analysis = data.choices?.[0]?.message?.content;
+    const analysis = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
     return res.status(200).json({ result: analysis });
   } catch (error) {
