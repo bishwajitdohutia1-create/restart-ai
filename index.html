@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restart AI - Global Career Reboot & Fair Talent Super-App</title>
+  <title>Restart AI - Global Career Reboot & Fair Talent Ecosystem</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -16,418 +16,106 @@
 </head>
 <body class="min-h-screen pb-20">
 
-  <!-- Header / Navigation Bar -->
+  <!-- Navigation -->
   <nav class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 py-4 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center font-brand font-black text-slate-950 text-xl shadow-lg shadow-emerald-500/20">
-        R
-      </div>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center font-brand font-black text-slate-950 text-xl shadow-lg shadow-emerald-500/20">R</div>
       <div>
-        <div class="flex items-center gap-2">
-          <span class="text-xl font-bold font-brand tracking-wide text-white">Restart AI</span>
-          <span class="text-[10px] uppercase font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">BETA LIVE</span>
-        </div>
-        <p class="text-[11px] text-slate-400">Dream Unplugged Project • Founder: Bishwajit Dohutia</p>
+        <h1 class="text-xl font-bold font-brand text-white">Restart AI</h1>
+        <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Global Talent Ecosystem</p>
       </div>
     </div>
-    
-    <div class="flex items-center gap-2 md:gap-3">
-      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 px-3.5 py-2 rounded-xl font-bold transition">
-        🔍 Find Jobs
-      </button>
-      <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 hover:bg-purple-500 text-white px-3.5 py-2 rounded-xl font-bold transition shadow-md shadow-purple-500/20">
-        👤 My Profile Studio
-      </button>
-      <button onclick="scrollToSection('cvSection')" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-xl font-bold transition shadow-md shadow-emerald-500/20">
-        📄 Upload CV
-      </button>
+    <div class="flex items-center gap-2">
+      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-slate-300 font-bold">🔍 Jobs</button>
+      <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 My Profile</button>
     </div>
   </nav>
 
-  <main class="max-w-6xl mx-auto px-4 pt-10 space-y-12">
-
-    <!-- Hero Value Section -->
-    <div class="text-center space-y-4">
-      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
-        Universal Zero-Bias Career Ecosystem & Fair Talent Protocol
-      </span>
-      <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
-        Eliminating Career-Gap Penalties & Recruiter Ghosting.
-      </h1>
-      <p class="text-slate-400 text-sm max-w-2xl mx-auto">
-        Upload your CV, search verified worldwide jobs, and build your permanent Naukri-style candidate profile.
-      </p>
-    </div>
-
-    <!-- 1. Upload & AI Resume Analysis Section -->
-    <section id="cvSection" class="bg-slate-900/90 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
-      <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold">
-            📄
-          </div>
-          <div>
-            <h2 class="text-lg md:text-xl font-bold text-white">AI Resume Analyzer & CV Upload Hub</h2>
-            <p class="text-xs text-slate-400">Upload your CV to audit career gaps, clear bot filters, and benchmark global roles</p>
-          </div>
-        </div>
-        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-emerald-400">98% Bot Pass Rate</span>
-      </div>
-
-      <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500/60 rounded-2xl p-8 text-center space-y-4 bg-slate-950/60 transition cursor-pointer" onclick="document.getElementById('cvFileInput').click()">
-        <input type="file" id="cvFileInput" class="hidden" accept=".pdf,.doc,.docx" onchange="processResumeUpload(event)">
-        <div class="text-4xl text-emerald-400">☁️</div>
-        <div>
-          <p class="text-sm font-bold text-white" id="uploadStatusText">Click here to upload your CV (PDF or DOCX)</p>
-          <p class="text-xs text-slate-500 mt-1">Zero automated penalty for breaks • Encrypted & Confidential</p>
-        </div>
-        <button type="button" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl shadow-md transition">
-          Browse & Upload CV
-        </button>
-      </div>
-
-      <div id="resumeAnalysisBox" class="hidden bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-5">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wide">CV Analysis Complete</span>
-          </div>
-          <span class="text-xs text-slate-400">Target Match: <b class="text-emerald-400">96.4%</b></span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
-            <span class="text-slate-400 block text-[11px]">Career Gap Shield</span>
-            <span class="text-emerald-400 font-bold text-sm">0% Penalty Protected</span>
-          </div>
-          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
-            <span class="text-slate-400 block text-[11px]">HR SLA Enforced</span>
-            <span class="text-cyan-400 font-bold text-sm">7-Day Mandatory Update</span>
-          </div>
-          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
-            <span class="text-slate-400 block text-[11px]">Referral Bounty</span>
-            <span class="text-amber-400 font-bold text-sm">Eligible for ₹15,000</span>
-          </div>
-          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
-            <span class="text-slate-400 block text-[11px]">ATS Keyword Clearance</span>
-            <span class="text-purple-400 font-bold text-sm">A+ High Visibility</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Universal Worldwide Job Search Section -->
-    <section id="jobsSection" class="bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
-      <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl font-bold">
-            🌐
-          </div>
-          <div>
-            <h2 class="text-lg md:text-xl font-bold text-white">Universal Real-Time Job Marketplace</h2>
-            <p class="text-xs text-slate-400">Search any town, hill station, capital or country across the globe</p>
-          </div>
-        </div>
-        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-cyan-400">Global Auto-Suggest</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 relative z-30">
-        <div class="relative">
-          <input type="text" id="keywordSearch" oninput="handleRoleSuggest(event)" autocomplete="off" placeholder="Role / Keyword (e.g. Manager, Operations)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
-          <div id="roleDropdown" class="hidden absolute left-0 right-0 top-12 bg-slate-950 border border-slate-700 rounded-xl shadow-2xl max-h-56 overflow-y-auto custom-scroll z-50 py-1"></div>
-        </div>
-        
-        <div class="relative">
-          <input type="text" id="locationSearch" oninput="handleLocationSuggest(event)" autocomplete="off" placeholder="Location (e.g. Sikkim, Gangtok, Shimla, Assam, Japan)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
-          <div id="locationDropdown" class="hidden absolute left-0 right-0 top-12 bg-slate-950 border border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto custom-scroll z-50 py-1"></div>
-        </div>
-        
-        <button onclick="filterLiveJobs()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl py-3 px-6 transition shadow-md shadow-cyan-500/20">
-          Search Worldwide Jobs
-        </button>
-      </div>
-
-      <div class="flex items-center gap-2 flex-wrap text-xs pt-1">
-        <span class="text-slate-500 font-semibold">Quick Filters:</span>
-        <button onclick="quickSearch('Manager', 'Sikkim (Gangtok)')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">🏔️ Sikkim (Gangtok)</button>
-        <button onclick="quickSearch('Lead', 'Himachal Pradesh (Shimla)')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">🏔️ Himachal (Shimla)</button>
-        <button onclick="quickSearch('Operations', 'Assam (Dibrugarh)')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Dibrugarh</button>
-        <button onclick="quickSearch('Sales', 'Bihar (Patna)')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Patna, Bihar</button>
-        <button onclick="quickSearch('Director', 'Tokyo, Japan')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">🇯🇵 Japan</button>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2" id="jobsGrid"></div>
-    </section>
-
-    <!-- 3. Permanent Candidate Profile Studio (Naukri-style Profile Creator) -->
+  <main class="max-w-4xl mx-auto px-4 pt-10 space-y-12">
+    
+    <!-- Profile & CV Upload Combined Section -->
     <section id="profileSection" class="bg-slate-900/90 border border-purple-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
-      <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl font-bold">
-            👤
-          </div>
-          <div>
-            <h2 class="text-lg md:text-xl font-bold text-white">Permanent Candidate Profile Studio (Naukri Style)</h2>
-            <p class="text-xs text-slate-400">Create your registered professional profile (Saved securely on your browser)</p>
-          </div>
-        </div>
-        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-purple-400">Persistent Registry</span>
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-xl font-bold text-white">Candidate Registration & CV Hub</h2>
+        <p class="text-xs text-slate-400">Register your permanent profile and attach your latest resume here.</p>
       </div>
 
-      <!-- Profile Creation Form -->
       <form onsubmit="savePermanentProfile(event)" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Full Name</label>
-            <input type="text" id="profileName" required placeholder="e.g. Bishwajit Dohutia" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Email ID</label>
-            <input type="email" id="profileEmail" required placeholder="e.g. bishwajit@restart.ai" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Primary Expertise / Domain</label>
-            <input type="text" id="profileDomain" required placeholder="e.g. Operations Manager, Sales Lead" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
-        </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Preferred Location</label>
-            <input type="text" id="profileLocation" required placeholder="e.g. Sikkim, Assam, Remote" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Career Gap Note (Optional)</label>
-            <input type="text" id="profileGap" placeholder="e.g. Family break / Up-skilling period" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
+          <input type="text" id="profileName" required placeholder="Full Name" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="email" id="profileEmail" required placeholder="Email Address" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="profileDomain" required placeholder="Primary Expertise (e.g. Manager)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="profileLocation" required placeholder="Preferred Location" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
 
-        <button type="submit" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs py-3 px-6 rounded-xl transition shadow-md shadow-purple-500/20">
-          💾 Create & Save Permanent Profile
+        <!-- Integrated CV Upload -->
+        <div class="bg-slate-950 border border-slate-700 rounded-2xl p-6 text-center space-y-3">
+          <p class="text-xs text-slate-400">Upload Updated CV (PDF/DOCX)</p>
+          <input type="file" id="cvUploadInput" accept=".pdf,.doc,.docx" class="text-xs text-slate-300 block w-full text-center cursor-pointer">
+        </div>
+
+        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm py-4 rounded-xl">
+          💾 Save Profile & Upload CV
         </button>
       </form>
 
-      <!-- Live Display of Created Profiles -->
-      <div id="savedProfilesContainer" class="hidden space-y-4 pt-4 border-t border-slate-800">
-        <h3 class="text-xs font-bold text-purple-400 uppercase tracking-wide">Registered Profiles in Talent Pool:</h3>
-        <div id="profilesList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      <div id="savedProfilesContainer" class="hidden pt-6 border-t border-slate-800">
+        <div id="profilesList" class="space-y-4"></div>
       </div>
     </section>
 
+    <!-- Job Search -->
+    <section id="jobsSection" class="bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
+      <h2 class="text-lg font-bold text-white">Find Global Opportunities</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <input type="text" id="keywordSearch" placeholder="Role..." class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+        <input type="text" id="locationSearch" placeholder="Location..." class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+      </div>
+      <button onclick="filterLiveJobs()" class="w-full bg-cyan-600 text-slate-950 font-bold text-xs py-3 rounded-xl">Search Jobs</button>
+      <div id="jobsGrid" class="grid grid-cols-1 gap-4 pt-2"></div>
+    </section>
   </main>
 
-  <!-- Footer Section -->
-  <footer class="max-w-6xl mx-auto px-4 mt-16 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center font-bold text-emerald-400">
-        BD
-      </div>
-      <div>
-        <p class="text-slate-300 font-bold">Bishwajit Dohutia</p>
-        <p class="text-emerald-400">Founder & Creator • Restart AI Ecosystem</p>
-      </div>
-    </div>
-    <p>© 2026 Restart AI. Built for fair opportunity & experienced talent globally.</p>
-  </footer>
-
   <script>
-    const masterLocations = [
-      "Sikkim (Gangtok)", "Sikkim (Namchi)", "Sikkim, India", "Gangtok, Sikkim",
-      "Assam (Dibrugarh)", "Assam (Dispur)", "Assam (Guwahati)", "Assam (Tinsukia)",
-      "Himachal Pradesh (Shimla)", "Himachal Pradesh (Manali)", "Himachal Pradesh, India",
-      "Uttarakhand (Dehradun)", "Uttarakhand (Rishikesh)", "Uttarakhand, India",
-      "Bihar (Patna)", "Bihar (Gaya)", "Bihar, India", "Patna, Bihar",
-      "Delhi, NCR", "Mumbai, Maharashtra", "Bangalore, Karnataka", "Hyderabad, Telangana",
-      "Tokyo, Japan", "New York, USA", "London, United Kingdom", "Sydney, Australia", "Global / Anywhere Remote"
-    ];
-
-    const masterRoles = [
-      "Sales & Business Development Manager", "Operations & Administration Lead", 
-      "Branch Operations Manager", "Area Sales & Channel Officer", "Regional General Manager",
-      "Project & Field Operations Lead", "Full-Stack AI Solutions Specialist", "Senior Program Manager"
-    ];
-
-    const masterJobsDatabase = [
-      { title: "Regional Operations & Project Lead", company: "Himalayan Green Ventures", location: "Sikkim (Gangtok)", salary: "₹11 - 17 LPA", badge: "0% Gap Bias" },
-      { title: "Eco-Tourism & Operations Manager", company: "Highland Escapes Ltd", location: "Himachal Pradesh (Shimla)", salary: "₹10 - 16 LPA", badge: "0% Gap Bias" },
-      { title: "Senior Administration & Facility Head", company: "Doon Valley Corporate Park", location: "Uttarakhand (Dehradun)", salary: "₹12 - 18 LPA", badge: "7-Day SLA" },
-      { title: "Area Sales & Distribution Manager", company: "Eastern FMCG Network", location: "Bihar (Patna)", salary: "₹9 - 14 LPA", badge: "7-Day SLA" },
-      { title: "Senior Sales & Business Development Manager", company: "Assam Valley Enterprise", location: "Assam (Dibrugarh)", salary: "₹9 - 15 LPA", badge: "0% Gap Bias" },
-      { title: "Global AI Solutions Architect", company: "Nippon Next Tech", location: "Tokyo, Japan", salary: "¥9,500,000 / yr", badge: "Global Remote" }
-    ];
-
-    function handleLocationSuggest(e) {
-      const val = e.target.value.trim().toLowerCase();
-      const dropdown = document.getElementById('locationDropdown');
-      if (!val) { dropdown.classList.add('hidden'); return; }
-      const matches = masterLocations.filter(loc => loc.toLowerCase().includes(val));
-      if (matches.length > 0) {
-        dropdown.innerHTML = matches.map(loc => `
-          <div onclick="selectLocation('${loc}')" class="px-4 py-2.5 text-xs text-slate-300 hover:bg-cyan-500/20 hover:text-cyan-400 cursor-pointer transition flex items-center justify-between border-b border-slate-900">
-            <span>📍 ${loc}</span>
-          </div>
-        `).join('');
-        dropdown.classList.remove('hidden');
-      } else {
-        dropdown.innerHTML = `<div onclick="selectLocation('${e.target.value}')" class="px-4 py-2.5 text-xs text-slate-300 hover:bg-slate-900 cursor-pointer">🌐 Search live jobs in <b>"${e.target.value}"</b></div>`;
-        dropdown.classList.remove('hidden');
-      }
-    }
-
-    function selectLocation(loc) {
-      document.getElementById('locationSearch').value = loc;
-      document.getElementById('locationDropdown').classList.add('hidden');
-      filterLiveJobs();
-    }
-
-    function handleRoleSuggest(e) {
-      const val = e.target.value.trim().toLowerCase();
-      const dropdown = document.getElementById('roleDropdown');
-      if (!val) { dropdown.classList.add('hidden'); return; }
-      const matches = masterRoles.filter(role => role.toLowerCase().includes(val));
-      if (matches.length > 0) {
-        dropdown.innerHTML = matches.map(role => `
-          <div onclick="selectRole('${role}')" class="px-4 py-2.5 text-xs text-slate-300 hover:bg-emerald-500/25 hover:text-emerald-400 cursor-pointer transition border-b border-slate-900">💼 ${role}</div>
-        `).join('');
-        dropdown.classList.remove('hidden');
-      } else { dropdown.classList.add('hidden'); }
-    }
-
-    function selectRole(role) {
-      document.getElementById('keywordSearch').value = role;
-      document.getElementById('roleDropdown').classList.add('hidden');
-      filterLiveJobs();
-    }
-
-    function quickSearch(role, loc) {
-      document.getElementById('keywordSearch').value = role;
-      document.getElementById('locationSearch').value = loc;
-      filterLiveJobs();
-    }
-
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('#locationSearch') && !e.target.closest('#locationDropdown')) {
-        document.getElementById('locationDropdown').classList.add('hidden');
-      }
-      if (!e.target.closest('#keywordSearch') && !e.target.closest('#roleDropdown')) {
-        document.getElementById('roleDropdown').classList.add('hidden');
-      }
-    });
-
-    function renderJobs(jobsList) {
-      const grid = document.getElementById('jobsGrid');
-      grid.innerHTML = jobsList.map(job => `
-        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/40 transition shadow-lg">
-          <div class="flex items-center justify-between">
-            <div>
-              <h4 class="text-sm font-bold text-white">${job.title}</h4>
-              <p class="text-xs text-slate-400">${job.company} • 📍 ${job.location}</p>
-            </div>
-            <span class="text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full">${job.badge}</span>
-          </div>
-          <p class="text-xs text-slate-300">${job.salary} • Guaranteed 7-Day HR Response SLA</p>
-          <button onclick="applyJob('${job.title}')" class="w-full text-xs bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-slate-200 font-bold py-2.5 rounded-xl border border-slate-700 transition">
-            1-Click Apply with Uploaded CV
-          </button>
-        </div>
-      `).join('');
-    }
-
-    renderJobs(masterJobsDatabase);
-
-    function filterLiveJobs() {
-      const keyword = document.getElementById('keywordSearch').value.toLowerCase().trim();
-      const loc = document.getElementById('locationSearch').value.toLowerCase().trim();
-      let filtered = masterJobsDatabase.filter(job => {
-        const titleMatch = !keyword || job.title.toLowerCase().includes(keyword) || job.company.toLowerCase().includes(keyword);
-        const locMatch = !loc || job.location.toLowerCase().includes(loc);
-        return titleMatch && locMatch;
-      });
-      if (filtered.length === 0 && (keyword || loc)) {
-        filtered = [{
-          title: `Regional ${keyword ? keyword : 'Specialist'}`,
-          company: "Verified Fair-Hiring Partner",
-          location: loc ? loc : "Global Hub",
-          salary: "Competitive Package",
-          badge: "0% Gap Bias"
-        }];
-      }
-      renderJobs(filtered);
-    }
-
-    function scrollToSection(id) {
-      const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function processResumeUpload(e) {
-      const file = e.target.files[0];
-      if (file) {
-        document.getElementById('uploadStatusText').innerText = `Selected: ${file.name} (Analyzing...)`;
-        setTimeout(() => {
-          document.getElementById('resumeAnalysisBox').classList.remove('hidden');
-          document.getElementById('uploadStatusText').innerText = `✅ ${file.name} - Analyzed & Ready to Apply`;
-        }, 800);
-      }
-    }
-
-    function applyJob(jobTitle) {
-      const fileInput = document.getElementById('cvFileInput');
-      if (fileInput.files.length === 0) {
-        alert(`Please upload your CV first in the "Upload CV" section above, then click Apply.`);
-        scrollToSection('cvSection');
-      } else {
-        alert(`Application submitted successfully for "${jobTitle}" with guaranteed 7-Day HR SLA!`);
-      }
-    }
-
     function savePermanentProfile(e) {
       e.preventDefault();
-      const name = document.getElementById('profileName').value.trim();
-      const email = document.getElementById('profileEmail').value.trim();
-      const domain = document.getElementById('profileDomain').value.trim();
-      const location = document.getElementById('profileLocation').value.trim();
-      const gap = document.getElementById('profileGap').value.trim();
-
-      const newProfile = { name, email, domain, location, gap, date: new Date().toLocaleDateString() };
+      const cvInput = document.getElementById('cvUploadInput');
+      const cvName = cvInput.files.length > 0 ? cvInput.files[0].name : "No CV Attached";
+      
+      const profile = {
+        name: document.getElementById('profileName').value,
+        cv: cvName,
+        domain: document.getElementById('profileDomain').value,
+        location: document.getElementById('profileLocation').value
+      };
 
       let profiles = JSON.parse(localStorage.getItem('restartAiProfiles') || '[]');
-      profiles.unshift(newProfile);
+      profiles.unshift(profile);
       localStorage.setItem('restartAiProfiles', JSON.stringify(profiles));
-
-      displaySavedProfiles();
-      alert(`Success! Candidate profile for "${name}" has been permanently created and published.`);
+      
+      displayProfiles();
+      alert("Profile Saved & CV Attached Successfully!");
       e.target.reset();
     }
 
-    function displaySavedProfiles() {
+    function displayProfiles() {
       let profiles = JSON.parse(localStorage.getItem('restartAiProfiles') || '[]');
       const container = document.getElementById('savedProfilesContainer');
       const list = document.getElementById('profilesList');
-
-      if (profiles.length > 0) {
+      if(profiles.length > 0) {
         container.classList.remove('hidden');
         list.innerHTML = profiles.map(p => `
-          <div class="bg-slate-950 p-4 rounded-2xl border border-purple-500/30 space-y-2 relative shadow-md">
-            <div class="flex items-center justify-between">
-              <h4 class="text-sm font-bold text-white flex items-center gap-2">👤 ${p.name}</h4>
-              <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded-full font-bold">Verified Candidate</span>
-            </div>
-            <p class="text-xs text-slate-300"><b>Domain:</b> ${p.domain}</p>
-            <p class="text-xs text-slate-400"><b>Location:</b> 📍 ${p.location}</p>
-            ${p.gap ? `<p class="text-xs text-slate-500 italic"><b>Break Note:</b> ${p.gap}</p>` : ''}
-            <div class="pt-2 border-t border-slate-900 flex items-center justify-between text-[11px] text-slate-500">
-              <span>✉️ ${p.email}</span>
-              <span class="text-emerald-400 font-mono">Active Profile</span>
-            </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-purple-500/20 text-xs text-slate-300">
+            <p class="font-bold text-white">👤 ${p.name}</p>
+            <p>Expertise: ${p.domain} | Location: ${p.location}</p>
+            <p class="text-emerald-400">📄 CV Status: ${p.cv}</p>
           </div>
         `).join('');
       }
     }
 
-    window.onload = function() {
-      displaySavedProfiles();
-    };
+    window.onload = displayProfiles;
+    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
   </script>
 </body>
 </html>
