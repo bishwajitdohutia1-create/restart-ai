@@ -194,7 +194,7 @@
       </div>
 
       <div class="flex flex-col md:flex-row gap-3">
-        <input type="text" id="locationSearch" list="worldCities" placeholder="🌍 Type any letter (e.g. G, T, D, L)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs">
+        <input type="text" id="locationSearch" list="worldCities" placeholder="🌍 Type any location or letter..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs">
         <datalist id="worldCities">
           <option value="Guwahati, Assam, India">
           <option value="Tinsukia, Assam, India">
@@ -335,7 +335,11 @@ ATS COMPLIANCE: 98% COMPLIANT (PARSER READY)
       const salary = document.getElementById('salaryFilter').value;
       const loc = document.getElementById('locationSearch').value.trim();
 
-      alert(`Searching jobs for Role: "${role || 'All'}", Location: "${loc || 'Worldwide'}", Edu: "${edu || 'Any'}", Exp: "${exp || 'Any'}"...`);
+      if (loc) {
+        alert(`Searching verified jobs in "${loc}" for Role: "${role || 'All'}"...`);
+      } else {
+        alert(`Searching verified jobs worldwide for Role: "${role || 'All'}"...`);
+      }
     }
 
     function scrollToSection(id) {
