@@ -1,17 +1,267 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ReStartAI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReStartAI - Restart Your Career</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f8ff;
+      color: #172033;
+    }
+
+    header {
+      background: white;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #1769ff;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #eef5ff, #ffffff);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e5efff;
+      color: #1769ff;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 span {
+      color: #1769ff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 25px auto;
+      color: #5b6475;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 14px 25px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .primary {
+      background: #1769ff;
+      color: white;
+    }
+
+    .secondary {
+      background: white;
+      color: #1769ff;
+      border: 1px solid #1769ff;
+    }
+
+    .features {
+      padding: 70px 7%;
+      background: white;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      padding: 30px;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      background: #f9fbff;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .card p {
+      color: #667085;
+      line-height: 1.6;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 70px 20px;
+      background: #1769ff;
+      color: white;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      color: #dce8ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: white;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>ReStartAI</h1>
+  <header>
+    <div class="logo">ReStartAI</div>
 
-  <p>AI-powered re-employment platform</p>
+    <nav>
+      <a href="#">How It Works</a>
+      <a href="#">For Candidates</a>
+      <a href="#">For Recruiters</a>
+    </nav>
+  </header>
 
-  <p>Your career gap shouldn't define your future.</p>
+  <section class="hero">
+
+    <div class="badge">
+      AI-Powered Re-Employment Platform
+    </div>
+
+    <h1>
+      Your career gap shouldn't
+      <span>define your future.</span>
+    </h1>
+
+    <p>
+      ReStartAI helps long-term job seekers discover suitable opportunities,
+      improve their applications and connect with relevant recruiters.
+    </p>
+
+    <div class="buttons">
+      <button class="primary">Upload Your CV</button>
+      <button class="secondary">Explore Jobs</button>
+    </div>
+
+  </section>
+
+  <section class="features">
+
+    <h2>How ReStartAI Helps You</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div>📄</div>
+        <h3>AI CV Analysis</h3>
+        <p>
+          Upload your CV and let AI understand your experience,
+          skills and career profile.
+        </p>
+      </div>
+
+      <div class="card">
+        <div>🎯</div>
+        <h3>Smart Job Matching</h3>
+        <p>
+          Get relevant job opportunities based on your skills,
+          experience, location and career goals.
+        </p>
+      </div>
+
+      <div class="card">
+        <div>🤝</div>
+        <h3>Recruiter Connection</h3>
+        <p>
+          Allow suitable recruiters to discover your profile
+          and connect with you with your permission.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>Ready to restart your career?</h2>
+
+    <p>
+      Your career gap is only one chapter — not your whole story.
+    </p>
+
+    <button class="secondary">
+      Get Started
+    </button>
+
+  </section>
+
+  <footer>
+    © 2026 ReStartAI — AI-powered re-employment platform
+  </footer>
 
 </body>
 </html>
