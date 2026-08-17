@@ -3,626 +3,266 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restart AI - Global Career Reboot & Fair Hiring Infrastructure</title>
+  <title>Restart AI - Global Career Reboot & Fair Talent Super-App</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Outfit', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#ecfdf5',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-            },
-            dark: {
-              950: '#070a0f',
-              900: '#0b0f17',
-              800: '#111827',
-              700: '#1f2937',
-              600: '#374151',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <style>
-    .glass-card {
-      background: rgba(17, 24, 39, 0.88);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; color: #f8fafc; }
+    .font-brand { font-family: 'Space Grotesk', sans-serif; }
   </style>
 </head>
-<body class="bg-dark-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="min-h-screen pb-20">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 glass-card border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-emerald-600 flex items-center justify-center text-slate-950 font-display font-extrabold text-xl shadow-lg">
-          R
-        </div>
-        <div>
-          <span class="font-display text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Restart AI</span>
-          <span class="hidden sm:inline-block ml-2 text-[10px] uppercase tracking-wider bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2 py-0.5 rounded-full font-bold">Zero-Bias Career Ecosystem</span>
-        </div>
+  <!-- Header / Navigation Bar -->
+  <nav class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center font-brand font-black text-slate-950 text-xl shadow-lg shadow-emerald-500/20">
+        R
       </div>
-      <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold uppercase tracking-wider text-slate-300">
-        <a href="#profile-section" class="hover:text-brand-400 transition">Candidate Hub</a>
-        <a href="#studio-section" class="hover:text-brand-400 transition">ATS Studio</a>
-        <a href="#radar-section" class="hover:text-brand-400 transition">Job Radar</a>
-        <a href="#referral-section" class="hover:text-brand-400 transition">Referral Wallet</a>
-        <a href="#anti-ghost" class="hover:text-brand-400 transition">7-Day SLA</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <span class="text-xs bg-slate-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-          <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i> ₹18,500 Pts
-        </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xl font-bold font-brand tracking-wide text-white">Restart AI</span>
+          <span class="text-[10px] uppercase font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">BETA LIVE</span>
+        </div>
+        <p class="text-[11px] text-slate-400">Dream Unplugged Project • Founder: Bishwajit Dohutia</p>
       </div>
     </div>
-  </header>
+    
+    <div class="flex items-center gap-2 md:gap-3">
+      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 px-3.5 py-2 rounded-xl font-bold transition">
+        🔍 Find Jobs
+      </button>
+      <button onclick="scrollToSection('cvSection')" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-xl font-bold transition shadow-md shadow-emerald-500/20">
+        📄 Upload CV
+      </button>
+    </div>
+  </nav>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+  <main class="max-w-6xl mx-auto px-4 pt-10 space-y-12">
 
-    <!-- Anti-Gap & Transparency Alert -->
-    <div class="bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-brand-500/30 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400">
-          <i data-lucide="shield-check" class="w-5 h-5"></i>
-        </div>
-        <div>
-          <h2 class="text-sm font-bold text-white">Strict Employer Gap-Tolerance & Policy Mandate</h2>
-          <p class="text-xs text-slate-400">Companies penalizing career breaks get scored 0% and must explicitly tag their post to prevent candidate time loss.</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="text-[11px] bg-rose-950/80 text-rose-400 border border-rose-800 px-2.5 py-1 rounded font-semibold">0% Tolerance Flagged</span>
-        <span class="text-[11px] bg-emerald-950/80 text-emerald-400 border border-emerald-800 px-2.5 py-1 rounded font-semibold">100% Restart Verified</span>
-      </div>
+    <!-- Hero Value Section -->
+    <div class="text-center space-y-4">
+      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
+        Zero-Bias Career Ecosystem & Fair Talent Protocol
+      </span>
+      <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        Eliminating Career-Gap Penalties & Recruiter Ghosting.
+      </h1>
+      <p class="text-slate-400 text-sm max-w-2xl mx-auto">
+        Empowering experienced talent worldwide with unbiased AI screening, live 7-Day HR SLAs, and direct peer-to-peer referral bounties.
+      </p>
     </div>
 
-    <!-- SECTION 1: Candidate Profile Hub (Naukri Style) -->
-    <section id="profile-section" class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div>
-          <h2 class="font-display text-xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="user-plus" class="w-5 h-5 text-brand-400"></i> Naukri-Style Candidate Profile Builder
-          </h2>
-          <p class="text-xs text-slate-400 mt-1">Set your experience, age, and transition details to unlock custom hot-listing matches.</p>
-        </div>
-        <span id="profileBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-xs font-semibold">
-          <i data-lucide="circle-dashed" class="w-3.5 h-3.5"></i> Profile Pending
-        </span>
-      </div>
-
-      <form id="candidateForm" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Full Name</label>
-          <input id="cName" type="text" placeholder="e.g. Bishwajit Dohutia" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-slate-200 outline-none focus:border-brand-500">
-        </div>
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Candidate Age (Years)</label>
-          <select id="cAge" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-slate-200 outline-none focus:border-brand-500">
-            <option value="41">41 Years (36–45 Cohort)</option>
-            <option value="24">18–25 Years</option>
-            <option value="30">26–35 Years</option>
-            <option value="50">46–55 Years</option>
-            <option value="58">55+ Years</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Total Experience</label>
-          <select id="cExp" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-slate-200 outline-none focus:border-brand-500">
-            <option value="8">8 Years Combined Experience</option>
-            <option value="2">0–2 Years (Junior)</option>
-            <option value="5">3–5 Years (Mid-Level)</option>
-            <option value="10">8–12 Years (Senior Lead)</option>
-            <option value="15">12+ Years (Executive)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Preferred Location</label>
-          <input id="cLoc" type="text" placeholder="e.g. Guwahati / Tinsukia / Remote / USA" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-slate-200 outline-none focus:border-brand-500">
-        </div>
-        <div class="sm:col-span-2 md:col-span-3">
-          <label class="block font-semibold text-slate-300 mb-1">Career Transition / Gap Reason</label>
-          <input id="cGap" type="text" placeholder="e.g. Independent Business Venture / Sabbatical / Upskilling" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-slate-200 outline-none focus:border-brand-500">
-        </div>
-        <div class="flex items-end">
-          <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold py-2.5 rounded-lg transition flex items-center justify-center gap-1.5 shadow-sm">
-            <i data-lucide="save" class="w-4 h-4"></i> Save & Hot-List Profile
-          </button>
-        </div>
-      </form>
-
-      <div id="profilePreview" class="hidden bg-slate-900/90 border border-brand-500/40 rounded-xl p-4 text-xs space-y-3">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-brand-400 font-bold flex items-center justify-center text-sm" id="prevAvatar">B</div>
-            <div>
-              <h3 class="font-bold text-white text-sm" id="prevName">Candidate Name</h3>
-              <p class="text-slate-400" id="prevSubtitle">8 Yrs Exp • Age: 41 • Base: Assam</p>
-            </div>
+    <!-- 1. Upload & AI Resume Analysis Section -->
+    <section id="cvSection" class="bg-slate-900/90 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
+      <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold">
+            📄
           </div>
-          <span class="inline-flex items-center gap-1 text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-md border border-emerald-500/20">
-            <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-400"></i> Hot-List Selection Probability: 96%
-          </span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-slate-300">
-          <div><span class="text-slate-500 block">Age Eligibility:</span> <strong class="text-white">Full Clearance (No Limits)</strong></div>
-          <div><span class="text-slate-500 block">Gap Shield:</span> <strong class="text-emerald-400 font-bold">100% Protected (Blind Mode)</strong></div>
-          <div><span class="text-slate-500 block">Preferred Target:</span> <strong id="prevLocText" class="text-white">-</strong></div>
-          <div><span class="text-slate-500 block">Referral Bounty:</span> <strong class="text-amber-400 font-bold">Active for ₹15k Sharing</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: ATS Studio & AI Cover Letter Generator -->
-    <section id="studio-section" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      
-      <!-- ATS Optimizer -->
-      <div class="glass-card rounded-2xl p-6 space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="font-display font-bold text-base text-white flex items-center gap-2">
-            <i data-lucide="file-check-2" class="w-4 h-4 text-brand-400"></i> ATS Resume Optimizer (Gap-Safe)
-          </h3>
-          <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">Bypass Automated Bots</span>
-        </div>
-        <textarea id="resumeInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-200 outline-none focus:border-brand-500" placeholder="Paste your raw resume summary or bullet points here..."></textarea>
-        <button id="btnOptimizeATS" class="w-full bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 py-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2">
-          <i data-lucide="cpu" class="w-3.5 h-3.5 text-brand-400"></i> Format Resume for 98% ATS Pass
-        </button>
-        <div id="atsOutputBox" class="hidden bg-slate-900 p-3 rounded-lg border border-slate-800 text-xs font-mono text-emerald-400 whitespace-pre-wrap"></div>
-      </div>
-
-      <!-- AI Cover Letter Generator -->
-      <div class="glass-card rounded-2xl p-6 space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="font-display font-bold text-base text-white flex items-center gap-2">
-            <i data-lucide="mail-plus" class="w-4 h-4 text-cyan-400"></i> AI Cover Letter Generator
-          </h3>
-          <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">Frame Gaps as Superpowers</span>
-        </div>
-        <input id="clJobRole" type="text" placeholder="Target Job Title (e.g. Senior Operations Manager)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-brand-500">
-        <textarea id="clContext" rows="2" placeholder="Key achievements or transition highlights to include..." class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-brand-500"></textarea>
-        <button id="btnGenerateCL" class="w-full bg-brand-500 hover:bg-brand-600 text-slate-950 py-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2">
-          <i data-lucide="wand-2" class="w-3.5 h-3.5"></i> Generate Tailored Executive Cover Letter
-        </button>
-        <div id="clOutputBox" class="hidden bg-slate-900 p-3 rounded-lg border border-slate-800 text-xs font-mono text-slate-300 whitespace-pre-wrap"></div>
-      </div>
-
-    </section>
-
-    <!-- SECTION 3: Ultra-Fresh Radar & Multi-Parametric Job Search -->
-    <section id="radar-section" class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-4">
-        <div>
-          <h2 class="font-display text-xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="radar" class="w-5 h-5 text-brand-400 animate-spin"></i> Global Job Radar & Eligibility Search
-          </h2>
-          <p class="text-xs text-slate-400 mt-1">Filter by exact posting hour, years of experience, age brackets, and gap-tolerance policies.</p>
-        </div>
-
-        <!-- Hourly Window Selector -->
-        <div class="flex flex-wrap items-center gap-1 bg-slate-900 p-1.5 rounded-xl border border-slate-800 text-xs">
-          <button data-time="all" class="t-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold">All Time</button>
-          <button data-time="1h" class="t-btn px-2.5 py-1.5 rounded-lg bg-brand-500 text-slate-950 font-bold flex items-center gap-1">
-            <i data-lucide="zap" class="w-3 h-3"></i> &lt; 1 Hour
-          </button>
-          <button data-time="2h" class="t-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold">&lt; 2h</button>
-          <button data-time="6h" class="t-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold">&lt; 6h</button>
-          <button data-time="24h" class="t-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold">&lt; 24h</button>
-          <button data-time="30d" class="t-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold">&lt; 30 Days</button>
-        </div>
-      </div>
-
-      <!-- Multi-Parametric Filter Controls -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 text-xs">
-        
-        <!-- Experience Select -->
-        <div>
-          <label class="block text-slate-400 font-semibold mb-1">Required Experience</label>
-          <select id="filterExp" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-200 outline-none focus:border-brand-500">
-            <option value="all">Any Experience</option>
-            <option value="0-2">0–2 Years (Junior)</option>
-            <option value="3-5">3–5 Years (Mid-Level)</option>
-            <option value="8+" selected>8+ Years (Senior Lead / Manager)</option>
-            <option value="12+">12+ Years (Executive)</option>
-          </select>
-        </div>
-
-        <!-- Age Limit Select -->
-        <div>
-          <label class="block text-slate-400 font-semibold mb-1">Age Eligibility</label>
-          <select id="filterAge" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-200 outline-none focus:border-brand-500">
-            <option value="all">All Age Groups (No Limit)</option>
-            <option value="36-45" selected>Age 36–45 Accepted</option>
-            <option value="18-35">Age 18–35 Focused</option>
-            <option value="46+">Age 46+ Senior Welcome</option>
-          </select>
-        </div>
-
-        <!-- Country / Region -->
-        <div>
-          <label class="block text-slate-400 font-semibold mb-1">Country / Region</label>
-          <select id="filterCountry" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-200 outline-none focus:border-brand-500">
-            <option value="all">🌐 All Countries (Global)</option>
-            <option value="india">🇮🇳 India (Assam / Remote)</option>
-            <option value="usa">🇺🇸 United States</option>
-            <option value="uk">🇬🇧 United Kingdom</option>
-          </select>
-        </div>
-
-        <!-- City Search -->
-        <div>
-          <label class="block text-slate-400 font-semibold mb-1">City / State Search</label>
-          <input id="filterCity" type="text" placeholder="e.g. Guwahati / London" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-200 outline-none focus:border-brand-500">
-        </div>
-
-        <!-- Visa & Gap Shield Toggle -->
-        <div>
-          <label class="block text-slate-400 font-semibold mb-1">Policy Filters</label>
-          <div class="flex items-center gap-2 pt-1">
-            <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
-              <input type="checkbox" id="filterVisaOnly" class="accent-brand-500">
-              <span>Visa Only</span>
-            </label>
-            <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
-              <input type="checkbox" id="filterSafeGapOnly" checked class="accent-brand-500">
-              <span>Hide Biased</span>
-            </label>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Live Job Cards Stream -->
-      <div id="jobListContainer" class="space-y-4 pt-2">
-
-        <!-- Job Card 1: Verified Gap-Safe -->
-        <div class="job-card glass-card rounded-2xl p-5 border border-brand-500/40 space-y-4"
-             data-time="1h" data-exp="8+" data-age="36-45" data-country="india" data-city="guwahati" data-visa="true" data-gap="safe">
-          
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <h3 class="font-bold text-base text-white">Senior Operations & Logistics Regional Lead</h3>
-                <span class="bg-emerald-500/20 text-brand-400 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/30">
-                  <i data-lucide="check-circle" class="w-3 h-3 inline"></i> 100% Gap-Friendly Verified
-                </span>
-                <span class="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30 flex items-center gap-1">
-                  <i data-lucide="coins" class="w-3 h-3"></i> ₹15,000 Referral Bounty
-                </span>
-              </div>
-              <p class="text-xs text-slate-400">Apex Supply Chain Global • Guwahati (Hybrid) • <strong>Posted 25 mins ago</strong></p>
-              <div class="flex flex-wrap gap-2 text-[11px] pt-1">
-                <span class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Exp: 8–12 Years</span>
-                <span class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Age Eligibility: 25–50 Yrs (No Upper Barrier)</span>
-                <span class="bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-800">🔥 Hot-List Match: 98%</span>
-              </div>
-            </div>
-
-            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2">
-              <span class="text-xs font-mono text-emerald-400">48h SLA Guaranteed</span>
-              <div class="flex gap-2">
-                <button onclick="referPeer('Senior Operations Lead', '₹15,000')" class="bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-bold px-3 py-2 rounded-lg border border-slate-700 transition">
-                  Refer Peer
-                </button>
-                <button class="bg-brand-500 hover:bg-brand-600 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg transition whitespace-nowrap">
-                  Direct Apply
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Transparency Ledger & Social Links -->
-          <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div class="space-y-1">
-              <span class="text-[10px] font-bold uppercase text-slate-400">Company Transparency & Culture</span>
-              <div class="flex gap-3 text-[11px] text-slate-300">
-                <span>Job Security: <strong class="text-emerald-400">94%</strong></span>
-                <span>Satisfaction: <strong class="text-emerald-400">89%</strong></span>
-                <span>Ghosting Rate: <strong class="text-white">0% (Strict SLA)</strong></span>
-              </div>
-            </div>
-            <div class="space-y-1">
-              <span class="text-[10px] font-bold uppercase text-slate-400">Official Channels & Verify</span>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://linkedin.com" target="_blank" class="text-[11px] bg-slate-800 hover:bg-blue-900/40 text-blue-400 px-2 py-0.5 rounded border border-slate-700">LinkedIn</a>
-                <a href="https://x.com" target="_blank" class="text-[11px] bg-slate-800 hover:bg-sky-900/40 text-sky-400 px-2 py-0.5 rounded border border-slate-700">X</a>
-                <a href="https://instagram.com" target="_blank" class="text-[11px] bg-slate-800 hover:bg-pink-900/40 text-pink-400 px-2 py-0.5 rounded border border-slate-700">Instagram</a>
-                <a href="https://facebook.com" target="_blank" class="text-[11px] bg-slate-800 hover:bg-indigo-900/40 text-indigo-400 px-2 py-0.5 rounded border border-slate-700">Facebook</a>
-                <a href="https://glassdoor.com" target="_blank" class="text-[11px] bg-slate-800 hover:bg-emerald-900/40 text-emerald-400 px-2 py-0.5 rounded border border-slate-700">Glassdoor (4.5★)</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Job Card 2: Biased Employer (0% Tolerance Flagged) -->
-        <div class="job-card bg-rose-950/20 border border-rose-500/40 rounded-2xl p-5 space-y-3"
-             data-time="2h" data-exp="5-8" data-age="18-35" data-country="india" data-city="tinsukia" data-visa="false" data-gap="biased">
-          
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <h3 class="font-bold text-base text-slate-300">Branch Operations Executive</h3>
-                <span class="bg-rose-500/20 text-rose-400 text-[10px] font-bold px-2 py-0.5 rounded border border-rose-500/30 flex items-center gap-1">
-                  <i data-lucide="alert-octagon" class="w-3 h-3"></i> Gap-Tolerance: 0% (Flagged Biased Employer)
-                </span>
-              </div>
-              <p class="text-xs text-slate-400">Legacy Finance Ltd • Tinsukia, Assam • Posted 1h 45m ago</p>
-              
-              <div class="bg-rose-950/80 text-rose-300 p-2 rounded border border-rose-800 text-[11px] font-semibold mt-1">
-                ⚠️ Employer Policy Mandate: "Continuous employment strictly required. Candidates with career gaps or sabbaticals are not accepted for this role." (Time-Loss Warning)
-              </div>
-            </div>
-
-            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2">
-              <span class="text-xs text-rose-400 font-semibold">Low Match for Rebooters</span>
-              <button class="bg-slate-800 text-slate-400 hover:text-white text-xs font-semibold px-4 py-2 rounded-lg border border-slate-700 transition">
-                Apply Anyway
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Job Card 3: USA Visa Sponsorship Verified -->
-        <div class="job-card glass-card rounded-2xl p-5 border border-brand-500/40 space-y-4"
-             data-time="6h" data-exp="8+" data-age="36-45" data-country="usa" data-city="new york" data-visa="true" data-gap="safe">
-          
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <h3 class="font-bold text-base text-white">Central Operations & Workflow Director | 🇺🇸 USA</h3>
-                <span class="bg-cyan-500/20 text-cyan-400 text-[10px] font-bold px-2 py-0.5 rounded border border-cyan-500/30">
-                  🛡️ Guaranteed H1B/Visa Sponsorship
-                </span>
-                <span class="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30">
-                  ₹25,000 Referral Bounty
-                </span>
-              </div>
-              <p class="text-xs text-slate-400">ScaleFlow Global Logistics • New York / Remote • Posted 4 hours ago</p>
-              <div class="flex flex-wrap gap-2 text-[11px] pt-1">
-                <span class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Exp: 8–15 Years</span>
-                <span class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Age Eligibility: Open (Skill First)</span>
-                <span class="bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-800">🔥 Hot-List Match: 95%</span>
-              </div>
-            </div>
-
-            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2">
-              <span class="text-xs font-mono text-emerald-400">Direct Employer Gateway</span>
-              <div class="flex gap-2">
-                <button onclick="referPeer('Operations Director USA', '₹25,000')" class="bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-bold px-3 py-2 rounded-lg border border-slate-700 transition">
-                  Refer Peer
-                </button>
-                <button class="bg-brand-500 hover:bg-brand-600 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg transition whitespace-nowrap">
-                  Direct Apply
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
-            <span class="text-slate-400">Salary Radar: <strong class="text-white">$130,000 - $155,000 / Yr</strong> • Zero Consultancy Guarantee</span>
-            <div class="flex gap-2">
-              <a href="https://linkedin.com" target="_blank" class="text-blue-400 text-[11px] bg-slate-800 px-2 py-0.5 rounded">LinkedIn</a>
-              <a href="https://glassdoor.com" target="_blank" class="text-emerald-400 text-[11px] bg-slate-800 px-2 py-0.5 rounded">Glassdoor (4.7★)</a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 4: Peer Referral & Profit-Sharing Wallet -->
-    <section id="referral-section" class="glass-card rounded-2xl p-6 sm:p-8 space-y-6 border border-brand-500/40">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
-        <div>
-          <h2 class="font-display text-xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="gift" class="w-5 h-5 text-brand-400"></i> Peer Referral & Profit-Sharing Economy
-          </h2>
-          <p class="text-xs text-slate-400 mt-1">Refer candidates from your network and earn direct profit bounties when they get hired.</p>
-        </div>
-        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700 flex items-center gap-3">
           <div>
-            <span class="text-[10px] text-slate-400 block font-semibold uppercase">Wallet Balance</span>
-            <span class="text-lg font-mono font-bold text-brand-400">₹ 18,500</span>
+            <h2 class="text-lg md:text-xl font-bold text-white">AI Resume Analyzer & Gap Neutralizer</h2>
+            <p class="text-xs text-slate-400">Upload your CV to audit career gaps, clear bot filters, and get benchmarked</p>
           </div>
-          <button onclick="alert('Redemption request received! Payout will transfer via UPI/Bank.')" class="bg-brand-500 hover:bg-brand-600 text-slate-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">
-            Withdraw
-          </button>
         </div>
+        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-emerald-400">98% Bot Pass Rate</span>
       </div>
 
-      <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <!-- Drag and Drop Box -->
+      <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500/60 rounded-2xl p-8 text-center space-y-4 bg-slate-950/60 transition cursor-pointer" onclick="document.getElementById('cvFileInput').click()">
+        <input type="file" id="cvFileInput" class="hidden" accept=".pdf,.doc,.docx" onchange="processResumeUpload(event)">
+        <div class="text-4xl text-emerald-400">☁️</div>
         <div>
-          <span class="text-[11px] text-slate-400 block font-semibold mb-1">Your Custom Referral Link:</span>
-          <span id="myRefLink" class="text-xs font-mono text-emerald-400 bg-slate-900 px-3 py-1.5 rounded border border-slate-700 block sm:inline-block">https://restart-ai-eight.vercel.app/?ref=CAND-8942-BD</span>
+          <p class="text-sm font-bold text-white" id="uploadStatusText">Click here to upload your CV (PDF or DOCX)</p>
+          <p class="text-xs text-slate-500 mt-1">Zero automated penalty for breaks • Encrypted & Confidential</p>
         </div>
-        <button id="btnCopyLink" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold px-4 py-2 rounded-lg border border-slate-700 transition flex items-center justify-center gap-1.5">
-          <i data-lucide="copy" class="w-3.5 h-3.5 text-brand-400"></i> Copy Link
+        <button type="button" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl shadow-md transition">
+          Browse File
         </button>
+      </div>
+
+      <!-- Live Analysis Output Card -->
+      <div id="resumeAnalysisBox" class="hidden bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wide">Analysis Complete</span>
+          </div>
+          <span class="text-xs text-slate-400">Target Match: <b class="text-emerald-400">96.4%</b></span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-slate-400 block text-[11px]">Career Gap Shield</span>
+            <span class="text-emerald-400 font-bold text-sm">0% Penalty Protected</span>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-slate-400 block text-[11px]">HR SLA Enforced</span>
+            <span class="text-cyan-400 font-bold text-sm">7-Day Mandatory Update</span>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-slate-400 block text-[11px]">Referral Bounty</span>
+            <span class="text-amber-400 font-bold text-sm">Eligible for ₹15,000</span>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-slate-400 block text-[11px]">ATS Keyword Clearance</span>
+            <span class="text-purple-400 font-bold text-sm">A+ High Visibility</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SECTION 5: 7-Day HR Anti-Ghosting Protocol -->
-    <section id="anti-ghost" class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <h2 class="font-display text-xl font-bold flex items-center gap-2 text-white">
-            <i data-lucide="bell-ring" class="w-5 h-5 text-brand-400"></i> Strict 7-Day Anti-Ghosting Protection
-          </h2>
-          <p class="text-xs text-slate-400 mt-1">Recruiters are held accountable. Status update mandatory within 7 days.</p>
+    <!-- 2. Job Search, Location Filter & 1-Click Apply Section -->
+    <section id="jobsSection" class="bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
+      <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl font-bold">
+            🔍
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-white">Verified Bias-Free Job Marketplace</h2>
+            <p class="text-xs text-slate-400">Search verified openings by role, company, skills, or location</p>
+          </div>
         </div>
-        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-rose-500/10 text-rose-400 border border-rose-500/30 text-xs font-semibold">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Strict 168-Hour SLA
-        </span>
+        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-cyan-400">7-Day SLA Mandated</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-1.5">
-          <span class="font-bold text-brand-400 uppercase">Days 1 – 3</span>
-          <h4 class="font-bold text-sm text-white">Application Review Window</h4>
-          <p class="text-slate-400">Internal skill matching and preliminary evaluation.</p>
+      <!-- Search and Location Filters -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <input type="text" id="keywordSearch" placeholder="Role, Skills or Keywords (e.g. Operations, Engineer)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+        
+        <input type="text" id="locationSearch" placeholder="Location or Remote (e.g. Bangalore, Assam, Remote)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+        
+        <button onclick="filterLiveJobs()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl py-3 px-6 transition shadow-md shadow-cyan-500/20">
+          Search Jobs
+        </button>
+      </div>
+
+      <!-- Job Results Listing -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2" id="jobsGrid">
+        
+        <!-- Job Card 1 -->
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/40 transition">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-sm font-bold text-white">Operations & Administration Lead</h4>
+              <p class="text-xs text-slate-400">CloudMatrix Tech • 📍 Hybrid / Remote</p>
+            </div>
+            <span class="text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full">0% Gap Bias</span>
+          </div>
+          <p class="text-xs text-slate-300">₹12 - 18 LPA • Full Time • Guaranteed 7-Day HR Response SLA</p>
+          <button onclick="applyJob('Operations & Administration Lead')" class="w-full text-xs bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-slate-200 font-bold py-2.5 rounded-xl border border-slate-700 transition">
+            1-Click Apply with Uploaded CV
+          </button>
         </div>
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-1.5">
-          <span class="font-bold text-amber-400 uppercase">Days 4 – 6</span>
-          <h4 class="font-bold text-sm text-white">Automated Priority Nudge</h4>
-          <p class="text-slate-400">System dispatches automated status reminder directly to HR.</p>
+
+        <!-- Job Card 2 -->
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/40 transition">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-sm font-bold text-white">Full-Stack AI Solutions Specialist</h4>
+              <p class="text-xs text-slate-400">NexGen Systems • 📍 Remote</p>
+            </div>
+            <span class="text-[10px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded-full">₹15k Bounty</span>
+          </div>
+          <p class="text-xs text-slate-300">₹20 - 28 LPA • Remote • Direct Peer Profit-Sharing</p>
+          <button onclick="applyJob('Full-Stack AI Solutions Specialist')" class="w-full text-xs bg-slate-900 hover:bg-cyan-500 hover:text-slate-950 text-slate-200 font-bold py-2.5 rounded-xl border border-slate-700 transition">
+            1-Click Apply with Uploaded CV
+          </button>
         </div>
-        <div class="bg-rose-950/20 border border-rose-500/30 rounded-xl p-4 space-y-1.5">
-          <span class="font-bold text-rose-400 uppercase">Day 7 Breach</span>
-          <h4 class="font-bold text-sm text-white">Penalty & Peer Fast-Track</h4>
-          <p class="text-slate-300">Employer score dropped; candidate instantly boosted to alternative verified recruiters.</p>
+
+      </div>
+    </section>
+
+    <!-- 3. Candidate Profile Builder Section -->
+    <section id="profileSection" class="bg-slate-900/90 border border-purple-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
+      <div class="flex items-center gap-3 border-b border-slate-800 pb-4">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl font-bold">
+          👤
+        </div>
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-white">Candidate Portfolio & Verification Studio</h2>
+          <p class="text-xs text-slate-400">Publish your verified profile to receive automated interview invites directly</p>
         </div>
       </div>
+
+      <form onsubmit="handleProfileSubmit(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div>
+            <label class="block text-slate-400 mb-1 font-semibold">Full Name</label>
+            <input type="text" id="candidateName" required placeholder="e.g. Bishwajit Dohutia" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1 font-semibold">Target Domain / Primary Expertise</label>
+            <input type="text" id="candidateExpertise" required placeholder="e.g. Operations, Project Lead, Tech" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+          </div>
+        </div>
+
+        <div class="text-xs">
+          <label class="block text-slate-400 mb-1 font-semibold">Career Pause Note (Optional - Shielded under Fair Hiring Charter)</label>
+          <textarea rows="2" placeholder="e.g. Dedicated break for family commitments, upskilling, and independent ventures..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-400"></textarea>
+        </div>
+
+        <button type="submit" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs py-3 px-6 rounded-xl transition shadow-md shadow-purple-500/20">
+          Save & Publish Candidate Profile
+        </button>
+      </form>
     </section>
 
   </main>
 
-  <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
-    <p>© 2026 Restart AI. Built for fair, transparent, and bias-free global hiring.</p>
+  <!-- Footer Section -->
+  <footer class="max-w-6xl mx-auto px-4 mt-16 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center font-bold text-emerald-400">
+        BD
+      </div>
+      <div>
+        <p class="text-slate-300 font-bold">Bishwajit Dohutia</p>
+        <p class="text-emerald-400">Founder & Creator • Restart AI Ecosystem</p>
+      </div>
+    </div>
+    <p>© 2026 Restart AI. Built for fair opportunity & experienced talent.</p>
   </footer>
 
   <script>
-    lucide.createIcons();
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }
 
-    // Profile Submit
-    const cForm = document.getElementById('candidateForm');
-    cForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('cName').value;
-      const age = document.getElementById('cAge').value;
-      const exp = document.getElementById('cExp').value;
-      const loc = document.getElementById('cLoc').value;
-
-      document.getElementById('prevName').innerText = name;
-      document.getElementById('prevSubtitle').innerText = `${exp} Yrs Exp • Age: ${age} • Target: ${loc}`;
-      document.getElementById('prevLocText').innerText = loc;
-      document.getElementById('prevAvatar').innerText = name.charAt(0).toUpperCase();
-
-      document.getElementById('profilePreview').classList.remove('hidden');
-      const badge = document.getElementById('profileBadge');
-      badge.innerHTML = '<i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-400"></i> Profile Active';
-      badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-brand-400 border border-emerald-500/30 text-xs font-semibold';
-      lucide.createIcons();
-      alert('Candidate Profile Saved! Custom hot-listing and gap shields are active.');
-    });
-
-    // ATS Optimizer Logic
-    document.getElementById('btnOptimizeATS').addEventListener('click', () => {
-      const input = document.getElementById('resumeInput').value;
-      const out = document.getElementById('atsOutputBox');
-      if (!input) { alert('Please paste your resume summary.'); return; }
-      out.classList.remove('hidden');
-      out.innerText = `[ATS Match Score: 98% (Gap-Safe Optimization)]\n\n• Directed corporate operations and regional workflow coordination, achieving 100% SLA compliance.\n• Spearheaded cross-functional distribution networks and resource logistics.\n• Leveraged structured transition periods for advanced operational tooling and compliance audits.`;
-    });
-
-    // Cover Letter Generator Logic
-    document.getElementById('btnGenerateCL').addEventListener('click', () => {
-      const role = document.getElementById('clJobRole').value || 'Operations & Branch Lead';
-      const out = document.getElementById('clOutputBox');
-      out.classList.remove('hidden');
-      out.innerText = `Dear Hiring Team,\n\nI am writing to express my strong interest in the ${role} position. With over 8 years of combined corporate operations, logistics distribution, and strategic workflow execution, I specialize in driving bottom-line efficiency and cross-functional leadership.\n\nMy background includes direct ownership of end-to-end operations and multi-tier channel distribution. I look forward to discussing how my strategic execution can deliver immediate value.\n\nSincerely,\nCandidate`;
-    });
-
-    // Referral Actions
-    document.getElementById('btnCopyLink').addEventListener('click', () => {
-      navigator.clipboard.writeText(document.getElementById('myRefLink').innerText);
-      alert('Referral link copied to clipboard!');
-    });
-
-    function referPeer(title, bounty) {
-      const email = prompt(`Enter peer email or phone number to refer for "${title}" (${bounty} Bounty):`);
-      if (email) {
-        alert(`Referral sent to ${email}! Upon hiring confirmation, ${bounty} will be credited to your wallet.`);
+    function processResumeUpload(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('uploadStatusText').innerText = `Selected: ${file.name} (Analyzing...)`;
+        setTimeout(() => {
+          document.getElementById('resumeAnalysisBox').classList.remove('hidden');
+          document.getElementById('uploadStatusText').innerText = `✅ ${file.name} - Analyzed & Ready to Apply`;
+        }, 800);
       }
     }
 
-    // Dynamic Multi-Filter Logic
-    const timeBtns = document.querySelectorAll('.t-btn');
-    const jobCards = document.querySelectorAll('.job-card');
-    const expSelect = document.getElementById('filterExp');
-    const ageSelect = document.getElementById('filterAge');
-    const countrySelect = document.getElementById('filterCountry');
-    const cityInput = document.getElementById('filterCity');
-    const visaCheckbox = document.getElementById('filterVisaOnly');
-    const safeGapCheckbox = document.getElementById('filterSafeGapOnly');
-
-    let curTime = '1h';
-
-    function applyJobFilters() {
-      const expVal = expSelect.value;
-      const ageVal = ageSelect.value;
-      const countryVal = countrySelect.value;
-      const cityVal = cityInput.value.toLowerCase().trim();
-      const visaOnly = visaCheckbox.checked;
-      const hideBiased = safeGapCheckbox.checked;
-
-      jobCards.forEach(card => {
-        const cTime = card.getAttribute('data-time');
-        const cExp = card.getAttribute('data-exp');
-        const cAge = card.getAttribute('data-age');
-        const cCountry = card.getAttribute('data-country');
-        const cCity = card.getAttribute('data-city').toLowerCase();
-        const cVisa = card.getAttribute('data-visa') === 'true';
-        const cGap = card.getAttribute('data-gap');
-
-        const matchTime = (curTime === 'all' || curTime === '30d') ? true :
-                          (curTime === '24h' && ['1h', '2h', '6h', '24h'].includes(cTime)) ? true :
-                          (curTime === '6h' && ['1h', '2h', '6h'].includes(cTime)) ? true :
-                          (curTime === '2h' && ['1h', '2h'].includes(cTime)) ? true :
-                          (curTime === '1h' && cTime === '1h') ? true : false;
-
-        const matchExp = (expVal === 'all') || (cExp === expVal);
-        const matchAge = (ageVal === 'all') || (cAge === ageVal);
-        const matchCountry = (countryVal === 'all') || (cCountry === countryVal);
-        const matchCity = !cityVal || cCity.includes(cityVal);
-        const matchVisa = !visaOnly || cVisa;
-        const matchGap = !hideBiased || (cGap === 'safe');
-
-        if (matchTime && matchExp && matchAge && matchCountry && matchCity && matchVisa && matchGap) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+    function filterLiveJobs() {
+      const keyword = document.getElementById('keywordSearch').value.trim();
+      const loc = document.getElementById('locationSearch').value.trim();
+      alert(`Filtering live openings for: "${keyword || 'All Roles'}" in "${loc || 'All Locations'}". Zero-bias active!`);
     }
 
-    timeBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        timeBtns.forEach(b => b.className = 't-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold');
-        btn.className = 't-btn px-2.5 py-1.5 rounded-lg bg-brand-500 text-slate-950 font-bold flex items-center gap-1';
-        curTime = btn.getAttribute('data-time');
-        applyJobFilters();
-      });
-    });
+    function applyJob(jobTitle) {
+      const fileInput = document.getElementById('cvFileInput');
+      if (fileInput.files.length === 0) {
+        alert(`Please upload your CV first in the "Upload CV" section above, then click Apply.`);
+        scrollToSection('cvSection');
+      } else {
+        alert(`Application submitted successfully for "${jobTitle}" with guaranteed 7-Day HR SLA!`);
+      }
+    }
 
-    expSelect.addEventListener('change', applyJobFilters);
-    ageSelect.addEventListener('change', applyJobFilters);
-    countrySelect.addEventListener('change', applyJobFilters);
-    cityInput.addEventListener('input', applyJobFilters);
-    visaCheckbox.addEventListener('change', applyJobFilters);
-    safeGapCheckbox.addEventListener('change', applyJobFilters);
-
-    // Initial Filter Run
-    applyJobFilters();
+    function handleProfileSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('candidateName').value;
+      alert(`Thank you, ${name}! Your candidate profile is verified and published to the Restart AI talent pool.`);
+    }
   </script>
 </body>
 </html>
