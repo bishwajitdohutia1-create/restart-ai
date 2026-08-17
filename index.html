@@ -55,7 +55,7 @@
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h1>
       <p class="text-slate-400 text-sm max-w-2xl mx-auto">
-        Create your permanent candidate profile just like Naukri, save your credentials, and get discovered globally.
+        Upload your CV, search verified worldwide jobs, and build your permanent Naukri-style candidate profile.
       </p>
     </div>
 
@@ -67,7 +67,7 @@
             📄
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-white">AI Resume Analyzer & Gap Neutralizer</h2>
+            <h2 class="text-lg md:text-xl font-bold text-white">AI Resume Analyzer & CV Upload Hub</h2>
             <p class="text-xs text-slate-400">Upload your CV to audit career gaps, clear bot filters, and benchmark global roles</p>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <p class="text-xs text-slate-500 mt-1">Zero automated penalty for breaks • Encrypted & Confidential</p>
         </div>
         <button type="button" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl shadow-md transition">
-          Browse File
+          Browse & Upload CV
         </button>
       </div>
 
@@ -90,7 +90,7 @@
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wide">Analysis Complete</span>
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wide">CV Analysis Complete</span>
           </div>
           <span class="text-xs text-slate-400">Target Match: <b class="text-emerald-400">96.4%</b></span>
         </div>
@@ -167,11 +167,11 @@
             👤
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-white">Permanent Candidate Profile Studio</h2>
+            <h2 class="text-lg md:text-xl font-bold text-white">Permanent Candidate Profile Studio (Naukri Style)</h2>
             <p class="text-xs text-slate-400">Create your registered professional profile (Saved securely on your browser)</p>
           </div>
         </div>
-        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-purple-400">Naukri-Style Registry</span>
+        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-purple-400">Persistent Registry</span>
       </div>
 
       <!-- Profile Creation Form -->
@@ -207,7 +207,7 @@
         </button>
       </form>
 
-      <!-- Live Display of Created Profiles (Persistent Registry Card) -->
+      <!-- Live Display of Created Profiles -->
       <div id="savedProfilesContainer" class="hidden space-y-4 pt-4 border-t border-slate-800">
         <h3 class="text-xs font-bold text-purple-400 uppercase tracking-wide">Registered Profiles in Talent Pool:</h3>
         <div id="profilesList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
@@ -231,7 +231,6 @@
   </footer>
 
   <script>
-    // Universal Comprehensive Location Registry
     const masterLocations = [
       "Sikkim (Gangtok)", "Sikkim (Namchi)", "Sikkim, India", "Gangtok, Sikkim",
       "Assam (Dibrugarh)", "Assam (Dispur)", "Assam (Guwahati)", "Assam (Tinsukia)",
@@ -257,7 +256,6 @@
       { title: "Global AI Solutions Architect", company: "Nippon Next Tech", location: "Tokyo, Japan", salary: "¥9,500,000 / yr", badge: "Global Remote" }
     ];
 
-    // Location Suggestion Engine
     function handleLocationSuggest(e) {
       const val = e.target.value.trim().toLowerCase();
       const dropdown = document.getElementById('locationDropdown');
@@ -383,7 +381,6 @@
       }
     }
 
-    // Naukri-style Permanent Profile Registry (LocalStorage)
     function savePermanentProfile(e) {
       e.preventDefault();
       const name = document.getElementById('profileName').value.trim();
@@ -394,7 +391,6 @@
 
       const newProfile = { name, email, domain, location, gap, date: new Date().toLocaleDateString() };
 
-      // Save to Browser LocalStorage so it stays persistent
       let profiles = JSON.parse(localStorage.getItem('restartAiProfiles') || '[]');
       profiles.unshift(newProfile);
       localStorage.setItem('restartAiProfiles', JSON.stringify(profiles));
@@ -429,7 +425,6 @@
       }
     }
 
-    // Load saved profiles on page start
     window.onload = function() {
       displaySavedProfiles();
     };
