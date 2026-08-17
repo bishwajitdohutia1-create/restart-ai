@@ -9,115 +9,92 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #f8fafc;
-      color: #0f172a;
+      color: #1e293b;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      padding: 20px 12px;
       min-height: 100vh;
-      padding: 24px 16px;
     }
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #1e40af;
-      margin-bottom: 8px;
-    }
-    .tagline {
-      display: inline-block;
-      background: #e0e7ff;
-      color: #3730a3;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .hero-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0f172a;
-      max-width: 600px;
-      line-height: 1.3;
-      margin: 0 auto 12px;
-    }
-    .hero-title span {
-      color: #2563eb;
-    }
-    .hero-desc {
-      font-size: 0.95rem;
-      color: #475569;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 28px 24px;
-      max-width: 520px;
+    .container {
       width: 100%;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      max-width: 600px;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .header h1 {
+      color: #1e3a8a;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 4px 12px;
+      background-color: #e0e7ff;
+      color: #3730a3;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .subtitle {
+      margin-top: 14px;
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.5;
     }
     .btn-group {
       display: flex;
       gap: 12px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      margin-top: 20px;
+      margin-bottom: 16px;
     }
     .btn {
       flex: 1;
-      min-width: 140px;
-      padding: 12px 18px;
-      font-size: 0.95rem;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
       font-weight: 600;
-      border-radius: 8px;
-      border: none;
       cursor: pointer;
+      border: none;
       text-align: center;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+    }
+    .btn-outline {
+      background-color: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-outline:hover {
+      background-color: #e2e8f0;
     }
     .btn-primary {
-      background-color: #2563eb;
+      background-color: #1d4ed8;
       color: #ffffff;
     }
     .btn-primary:hover {
-      background-color: #1d4ed8;
+      background-color: #1e40af;
     }
-    .btn-secondary {
-      background-color: #f1f5f9;
-      color: #1e293b;
-      border: 1px solid #cbd5e1;
-    }
-    .btn-secondary:hover {
-      background-color: #e2e8f0;
-    }
-    .btn:disabled {
-      background-color: #94a3b8;
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-    #file-status {
-      font-size: 0.85rem;
+    .file-status {
+      font-size: 13px;
       color: #2563eb;
+      margin-bottom: 12px;
       font-weight: 500;
-      margin-bottom: 16px;
-      display: none;
       word-break: break-all;
     }
-    .text-input-area {
-      margin-bottom: 16px;
-      text-align: left;
-    }
-    .text-input-area label {
-      font-size: 0.85rem;
+    .input-label {
+      font-size: 13px;
       font-weight: 600;
       color: #475569;
       margin-bottom: 6px;
@@ -125,154 +102,165 @@
     }
     textarea {
       width: 100%;
-      height: 120px;
-      padding: 10px 12px;
+      height: 140px;
+      padding: 12px;
+      border-radius: 10px;
       border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-family: inherit;
+      font-size: 14px;
       resize: vertical;
+      outline: none;
     }
     textarea:focus {
-      outline: none;
       border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
     }
-    #result-box {
+    .result-box {
       margin-top: 24px;
-      text-align: left;
-      background: #f8fafc;
+      padding: 20px;
+      background-color: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 16px;
+      border-radius: 12px;
       display: none;
     }
-    #result-box h3 {
-      font-size: 1.1rem;
-      color: #1e40af;
-      margin-bottom: 10px;
+    .result-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 8px;
     }
-    #result-content {
-      font-size: 0.9rem;
+    .result-content {
+      font-size: 14px;
       line-height: 1.6;
       color: #334155;
-      white-space: pre-wrap;
+    }
+    .result-content h3 {
+      color: #1e3a8a;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+    .result-content h4 {
+      color: #2563eb;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .result-content ul {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    .result-content li {
+      margin-bottom: 4px;
     }
     .spinner {
       display: none;
-      margin: 16px auto;
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid #2563eb;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      text-align: center;
+      padding: 16px;
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <header>
+<div class="container">
+  <div class="header">
     <h1>ReStartAI</h1>
-    <div class="tagline">AI-Powered Re-Employment Platform</div>
-    <div class="hero-title">Your career gap shouldn't <span>define your future.</span></div>
-    <p class="hero-desc">ReStartAI helps people returning to work discover opportunities and restart their careers with confidence.</p>
-  </header>
+    <span class="badge">AI-Powered Re-Employment Platform</span>
+    <p class="subtitle">Your career gap shouldn't define your future. Upload your CV or paste details to get instant career insights.</p>
+  </div>
 
-  <main class="card">
-    <input type="file" id="cv-file" accept=".txt,.pdf,.docx" style="display: none;">
-    
-    <div class="btn-group">
-      <button type="button" class="btn btn-secondary" id="btn-upload">Upload CV File</button>
-      <button type="button" class="btn btn-primary" id="btn-analyze">Analyze My CV</button>
-    </div>
+  <input type="file" id="cvFileInput" accept=".pdf,.doc,.docx,.txt" style="display: none;">
 
-    <div id="file-status">Selected: <span id="file-name"></span></div>
+  <div class="btn-group">
+    <button class="btn btn-outline" onclick="document.getElementById('cvFileInput').click()">Upload CV File</button>
+    <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeCV()">Analyze My CV</button>
+  </div>
 
-    <div class="text-input-area">
-      <label for="cv-text">Or paste your CV / Career text here:</label>
-      <textarea id="cv-text" placeholder="Paste your resume details, skills, and past experience here..."></textarea>
-    </div>
+  <div id="fileStatus" class="file-status"></div>
 
-    <div class="spinner" id="spinner"></div>
+  <label class="input-label" for="cvText">Or paste your CV / Career text here:</label>
+  <textarea id="cvText" placeholder="Paste your resume details, skills, and past experience here..."></textarea>
 
-    <div id="result-box">
-      <h3>Analysis Result</h3>
-      <div id="result-content"></div>
-    </div>
-  </main>
+  <div id="spinner" class="spinner">Analyzing your profile with AI...</div>
 
-  <script>
-    const fileInput = document.getElementById('cv-file');
-    const uploadBtn = document.getElementById('btn-upload');
-    const analyzeBtn = document.getElementById('btn-analyze');
-    const fileStatus = document.getElementById('file-status');
-    const fileNameSpan = document.getElementById('file-name');
-    const cvText = document.getElementById('cv-text');
-    const resultBox = document.getElementById('result-box');
-    const resultContent = document.getElementById('result-content');
-    const spinner = document.getElementById('spinner');
+  <div id="resultBox" class="result-box">
+    <div class="result-title">Analysis Result</div>
+    <div id="resultContent" class="result-content"></div>
+  </div>
+</div>
 
-    let uploadedFileText = "";
+<script>
+  const fileInput = document.getElementById('cvFileInput');
+  const fileStatus = document.getElementById('fileStatus');
+  const cvTextArea = document.getElementById('cvText');
+  const resultBox = document.getElementById('resultBox');
+  const resultContent = document.getElementById('resultContent');
+  const spinner = document.getElementById('spinner');
+  const analyzeBtn = document.getElementById('analyzeBtn');
 
-    uploadBtn.addEventListener('click', () => {
-      fileInput.click();
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        fileNameSpan.textContent = file.name;
-        fileStatus.style.display = 'block';
-
+  fileInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      fileStatus.innerText = 'Selected: ' + file.name;
+      if (file.type === "text/plain") {
         const reader = new FileReader();
-        reader.onload = (event) => {
-          uploadedFileText = event.target.result;
+        reader.onload = function(evt) {
+          cvTextArea.value = evt.target.result;
         };
         reader.readAsText(file);
       }
-    });
+    }
+  });
 
-    analyzeBtn.addEventListener('click', async () => {
-      const textToAnalyze = cvText.value.trim() || uploadedFileText.trim();
+  function formatMarkdown(text) {
+    return text
+      .replace(/### (.*)/g, '<h3>$1</h3>')
+      .replace(/#### (.*)/g, '<h4>$1</h4>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\* (.*)/g, '<li>$1</li>')
+      .replace(/\n/g, '<br/>');
+  }
 
-      if (!textToAnalyze) {
-        alert('Please paste your CV text or upload a file first.');
-        return;
+  async function analyzeCV() {
+    const text = cvTextArea.value.trim();
+    if (!text && !fileInput.files[0]) {
+      alert('Please enter your resume text or upload a file first.');
+      return;
+    }
+
+    const payloadText = text || ("Resume profile data from uploaded file: " + (fileInput.files[0] ? fileInput.files[0].name : ""));
+
+    spinner.style.display = 'block';
+    resultBox.style.display = 'none';
+    analyzeBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cvText: payloadText })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to generate analysis.');
       }
 
-      analyzeBtn.disabled = true;
-      spinner.style.display = 'block';
-      resultBox.style.display = 'none';
+      resultContent.innerHTML = formatMarkdown(data.result);
+      resultBox.style.display = 'block';
+    } catch (err) {
+      alert('Error: ' + err.message);
+    } finally {
+      spinner.style.display = 'none';
+      analyzeBtn.disabled = false;
+    }
+  }
+</script>
 
-      try {
-        const response = await fetch('/api/analyze', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ cvText: textToAnalyze })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to analyze CV');
-        }
-
-        resultContent.textContent = data.analysis || data.result || JSON.stringify(data, null, 2);
-        resultBox.style.display = 'block';
-      } catch (err) {
-        alert('Error: ' + err.message);
-      } finally {
-        analyzeBtn.disabled = false;
-        spinner.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
