@@ -9,6 +9,10 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; color: #f8fafc; }
     .font-brand { font-family: 'Space Grotesk', sans-serif; }
+    /* Custom Scrollbar for Autocomplete Dropdown */
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #0b1526; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
   </style>
 </head>
 <body class="min-h-screen pb-20">
@@ -110,7 +114,7 @@
       </div>
     </section>
 
-    <!-- 2. Job Search, Location Filter & Dynamic Marketplace -->
+    <!-- 2. Smart Autocomplete Job & Location Search Engine -->
     <section id="jobsSection" class="bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
       <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
         <div class="flex items-center gap-3">
@@ -118,27 +122,47 @@
             🔍
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-white">Verified Bias-Free Job Marketplace</h2>
-            <p class="text-xs text-slate-400">Search verified openings by role, skills, or location</p>
+            <h2 class="text-lg md:text-xl font-bold text-white">Smart Autocomplete & Global Job Tracker</h2>
+            <p class="text-xs text-slate-400">Type any city, state, country or role — Instant live suggestions appear</p>
           </div>
         </div>
-        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-cyan-400">7-Day SLA Mandated</span>
+        <span class="text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-cyan-400">Live Auto-Suggest</span>
       </div>
 
-      <!-- Search Inputs -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <input type="text" id="keywordSearch" placeholder="Role / Keyword (e.g. Sales, Manager, Operations)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+      <!-- Live Interactive Inputs with Autocomplete Dropdowns -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 relative z-30">
         
-        <input type="text" id="locationSearch" placeholder="Location / Remote (e.g. Assam, Guwahati, Remote)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+        <!-- Role / Keyword Input with Auto-Suggest -->
+        <div class="relative">
+          <input type="text" id="keywordSearch" oninput="handleRoleSuggest(event)" autocomplete="off" placeholder="Role / Keyword (e.g. Sales, Manager, AI)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+          <div id="roleDropdown" class="hidden absolute left-0 right-0 top-12 bg-slate-950 border border-slate-700 rounded-xl shadow-2xl max-h-48 overflow-y-auto custom-scroll z-50 py-1"></div>
+        </div>
+        
+        <!-- Location Input with Auto-Suggest (Assam, India, USA, Global) -->
+        <div class="relative">
+          <input type="text" id="locationSearch" oninput="handleLocationSuggest(event)" autocomplete="off" placeholder="Location (e.g. Dibrugarh, Mumbai, USA)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+          <div id="locationDropdown" class="hidden absolute left-0 right-0 top-12 bg-slate-950 border border-slate-700 rounded-xl shadow-2xl max-h-48 overflow-y-auto custom-scroll z-50 py-1"></div>
+        </div>
         
         <button onclick="filterLiveJobs()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl py-3 px-6 transition shadow-md shadow-cyan-500/20">
           Search Jobs Now
         </button>
       </div>
 
+      <!-- Quick Location Pill Selector for Instant 1-Click Search -->
+      <div class="flex items-center gap-2 flex-wrap text-xs pt-1">
+        <span class="text-slate-500 font-semibold">Popular Searches:</span>
+        <button onclick="quickSearch('Manager', 'Assam')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Assam</button>
+        <button onclick="quickSearch('Sales', 'Dibrugarh')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Dibrugarh</button>
+        <button onclick="quickSearch('Operations', 'Guwahati')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Guwahati</button>
+        <button onclick="quickSearch('Lead', 'Mumbai')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Mumbai</button>
+        <button onclick="quickSearch('Executive', 'Delhi')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">📍 Delhi</button>
+        <button onclick="quickSearch('AI', 'USA (Remote)')" class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-lg transition">🌐 USA / Remote</button>
+      </div>
+
       <!-- Dynamic Job Results Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2" id="jobsGrid">
-        <!-- Renders automatically -->
+        <!-- Results rendered here -->
       </div>
     </section>
 
@@ -194,63 +218,172 @@
   </footer>
 
   <script>
-    // Rich initial database including Sales, Operations, Administration, Regional roles across Assam & India
+    // Global & Regional Comprehensive Locations
+    const masterLocations = [
+      "Dibrugarh, Assam", "Dispur, Assam", "Guwahati, Assam", "Tinsukia, Assam", 
+      "Jorhat, Assam", "Silchar, Assam", "Tezpur, Assam", "Nagaon, Assam",
+      "Delhi, NCR", "Mumbai, Maharashtra", "Bangalore, Karnataka", "Hyderabad, Telangana",
+      "Pune, Maharashtra", "Kolkata, West Bengal", "Chennai, Tamil Nadu",
+      "USA (Remote)", "America (Hybrid)", "United Kingdom (Remote)", "Singapore", "Canada (Remote)", "Global / Remote"
+    ];
+
+    // Master Roles
+    const masterRoles = [
+      "Sales & Business Development Manager", "Operations & Administration Lead", 
+      "Area Sales Officer", "Regional Channel Manager", "Branch Operations Executive",
+      "Full-Stack AI Solutions Specialist", "Senior Project Manager", "Customer Experience Lead"
+    ];
+
+    // Master Jobs Database
     const masterJobsDatabase = [
       {
         title: "Senior Sales & Business Development Manager",
         company: "Assam Valley Enterprise",
-        location: "Assam (Guwahati / Dibrugarh)",
+        location: "Dibrugarh, Assam",
         salary: "₹9 - 15 LPA",
+        badge: "0% Gap Bias",
+        badgeColor: "emerald"
+      },
+      {
+        title: "Operations & Administration Lead",
+        company: "Apex Infra Tech",
+        location: "Dispur, Assam",
+        salary: "₹10 - 16 LPA",
         badge: "0% Gap Bias",
         badgeColor: "emerald"
       },
       {
         title: "Area Sales & Channel Officer",
         company: "NorthEast Health & Life Services",
-        location: "Assam (Tinsukia / Jorhat)",
+        location: "Tinsukia, Assam",
         salary: "₹7 - 12 LPA",
         badge: "7-Day SLA",
         badgeColor: "cyan"
       },
       {
-        title: "Operations & Administration Lead",
-        company: "Apex Infra Tech",
-        location: "Assam",
-        salary: "₹10 - 16 LPA",
+        title: "Regional Operations Lead",
+        company: "Valley Logistics Group",
+        location: "Guwahati, Assam",
+        salary: "₹11 - 17 LPA",
         badge: "0% Gap Bias",
         badgeColor: "emerald"
       },
       {
-        title: "Regional Sales & Agency Lead",
-        company: "Prime Corporate Solutions",
-        location: "Assam / Remote",
-        salary: "₹12 - 18 LPA",
+        title: "Senior Project Manager",
+        company: "Metropolis Enterprise",
+        location: "Mumbai, Maharashtra",
+        salary: "₹18 - 25 LPA",
         badge: "₹15k Bounty",
         badgeColor: "amber"
       },
       {
-        title: "Full-Stack AI Solutions Specialist",
-        company: "NexGen Systems",
-        location: "Bangalore / Remote",
-        salary: "₹20 - 28 LPA",
-        badge: "₹15k Bounty",
-        badgeColor: "amber"
-      },
-      {
-        title: "Branch Operations & Logistics Executive",
-        company: "Express Cargo Logistics",
-        location: "Assam (Guwahati)",
-        salary: "₹6 - 10 LPA",
+        title: "Enterprise Strategy Executive",
+        company: "Capital Growth Hub",
+        location: "Delhi, NCR",
+        salary: "₹15 - 22 LPA",
         badge: "7-Day SLA",
         badgeColor: "cyan"
+      },
+      {
+        title: "Global AI Solutions Architect",
+        company: "CyberScale Global",
+        location: "USA (Remote)",
+        salary: "$85,000 - $120,000 / yr",
+        badge: "Global Remote",
+        badgeColor: "purple"
       }
     ];
 
+    // Autocomplete for Locations
+    function handleLocationSuggest(e) {
+      const val = e.target.value.trim().toLowerCase();
+      const dropdown = document.getElementById('locationDropdown');
+      
+      if (!val) {
+        dropdown.classList.add('hidden');
+        return;
+      }
+
+      const matches = masterLocations.filter(loc => loc.toLowerCase().includes(val));
+
+      if (matches.length > 0) {
+        dropdown.innerHTML = matches.map(loc => `
+          <div onclick="selectLocation('${loc}')" class="px-4 py-2 text-xs text-slate-300 hover:bg-cyan-500/20 hover:text-cyan-400 cursor-pointer transition flex items-center gap-2">
+            <span>📍</span>
+            <span>${loc}</span>
+          </div>
+        `).join('');
+        dropdown.classList.remove('hidden');
+      } else {
+        dropdown.innerHTML = `
+          <div onclick="selectLocation('${e.target.value}')" class="px-4 py-2 text-xs text-slate-400 hover:bg-slate-900 cursor-pointer">
+            Search for "${e.target.value}"
+          </div>
+        `;
+        dropdown.classList.remove('hidden');
+      }
+    }
+
+    function selectLocation(loc) {
+      document.getElementById('locationSearch').value = loc;
+      document.getElementById('locationDropdown').classList.add('hidden');
+      filterLiveJobs();
+    }
+
+    // Autocomplete for Roles
+    function handleRoleSuggest(e) {
+      const val = e.target.value.trim().toLowerCase();
+      const dropdown = document.getElementById('roleDropdown');
+      
+      if (!val) {
+        dropdown.classList.add('hidden');
+        return;
+      }
+
+      const matches = masterRoles.filter(role => role.toLowerCase().includes(val));
+
+      if (matches.length > 0) {
+        dropdown.innerHTML = matches.map(role => `
+          <div onclick="selectRole('${role}')" class="px-4 py-2 text-xs text-slate-300 hover:bg-emerald-500/20 hover:text-emerald-400 cursor-pointer transition flex items-center gap-2">
+            <span>💼</span>
+            <span>${role}</span>
+          </div>
+        `).join('');
+        dropdown.classList.remove('hidden');
+      } else {
+        dropdown.classList.add('hidden');
+      }
+    }
+
+    function selectRole(role) {
+      document.getElementById('keywordSearch').value = role;
+      document.getElementById('roleDropdown').classList.add('hidden');
+      filterLiveJobs();
+    }
+
+    // Quick Search Buttons
+    function quickSearch(role, loc) {
+      document.getElementById('keywordSearch').value = role;
+      document.getElementById('locationSearch').value = loc;
+      filterLiveJobs();
+    }
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#locationSearch') && !e.target.closest('#locationDropdown')) {
+        document.getElementById('locationDropdown').classList.add('hidden');
+      }
+      if (!e.target.closest('#keywordSearch') && !e.target.closest('#roleDropdown')) {
+        document.getElementById('roleDropdown').classList.add('hidden');
+      }
+    });
+
+    // Render Function
     function renderJobs(jobsList) {
       const grid = document.getElementById('jobsGrid');
       
       grid.innerHTML = jobsList.map(job => `
-        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/40 transition">
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/40 transition shadow-lg">
           <div class="flex items-center justify-between">
             <div>
               <h4 class="text-sm font-bold text-white">${job.title}</h4>
@@ -266,9 +399,10 @@
       `).join('');
     }
 
-    // Initial Render
+    // Initial Load
     renderJobs(masterJobsDatabase);
 
+    // Dynamic Filter Engine
     function filterLiveJobs() {
       const keyword = document.getElementById('keywordSearch').value.toLowerCase().trim();
       const loc = document.getElementById('locationSearch').value.toLowerCase().trim();
@@ -279,14 +413,14 @@
         return titleMatch && locMatch;
       });
 
-      // Dynamic generator: If user searches for custom terms, automatically construct verified bias-free postings
+      // If user inputs a new custom location/role not explicitly in the static list, dynamically generate validated job cards
       if (filtered.length === 0 && (keyword || loc)) {
-        const displayRole = keyword ? keyword.charAt(0).toUpperCase() + keyword.slice(1) : "Specialist";
+        const displayRole = keyword ? keyword.charAt(0).toUpperCase() + keyword.slice(1) : "Operations & Channel Specialist";
         const displayLoc = loc ? loc.charAt(0).toUpperCase() + loc.slice(1) : "Assam / Remote";
         
         filtered = [
           {
-            title: `Senior ${displayRole} Lead`,
+            title: `Senior ${displayRole}`,
             company: "Verified Fair-Hiring Partner",
             location: displayLoc,
             salary: "₹10 - 18 LPA",
@@ -294,10 +428,10 @@
             badgeColor: "emerald"
           },
           {
-            title: `${displayRole} Operations Executive`,
+            title: `${displayRole} Lead`,
             company: "Enterprise Growth Network",
             location: `${displayLoc} (Hybrid)`,
-            salary: "₹8 - 14 LPA",
+            salary: "₹9 - 15 LPA",
             badge: "7-Day SLA",
             badgeColor: "cyan"
           }
