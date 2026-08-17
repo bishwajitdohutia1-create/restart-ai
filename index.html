@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReStartAI - Restart Your Career</title>
+  <title>ReStartAI</title>
 
   <style>
     * {
@@ -19,7 +19,7 @@
     }
 
     header {
-      background: white;
+      background: #ffffff;
       padding: 20px 7%;
       display: flex;
       justify-content: space-between;
@@ -37,7 +37,6 @@
       margin-left: 20px;
       text-decoration: none;
       color: #4b5563;
-      font-size: 14px;
     }
 
     .hero {
@@ -48,26 +47,26 @@
 
     .badge {
       display: inline-block;
-      background: #e5efff;
-      color: #1769ff;
       padding: 8px 15px;
       border-radius: 30px;
-      font-size: 13px;
+      background: #e5efff;
+      color: #1769ff;
+      font-size: 14px;
       margin-bottom: 20px;
     }
 
     h1 {
+      max-width: 850px;
+      margin: auto;
       font-size: 48px;
       line-height: 1.15;
-      max-width: 800px;
-      margin: auto;
     }
 
     h1 span {
       color: #1769ff;
     }
 
-    .hero p {
+    .hero-text {
       max-width: 650px;
       margin: 25px auto;
       color: #5b6475;
@@ -80,13 +79,13 @@
     }
 
     button {
-      padding: 14px 25px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
+      padding: 14px 24px;
       margin: 5px;
+      border: none;
+      border-radius: 8px;
       font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     .primary {
@@ -102,4 +101,335 @@
 
     .status {
       margin-top: 15px;
-     
+      color: #1769ff;
+      font-weight: bold;
+    }
+
+    .analysis {
+      display: none;
+      max-width: 650px;
+      margin: 25px auto 0;
+      padding: 25px;
+      background: white;
+      border: 1px solid #dbe5ff;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .analysis h3 {
+      color: #1769ff;
+      margin-bottom: 10px;
+    }
+
+    .analysis p {
+      color: #5b6475;
+      line-height: 1.6;
+    }
+
+    .features {
+      padding: 70px 7%;
+      background: white;
+    }
+
+    .features h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      padding: 30px;
+      background: #f9fbff;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+    }
+
+    .card-icon {
+      font-size: 30px;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .card p {
+      color: #667085;
+      line-height: 1.6;
+    }
+
+    .cta {
+      padding: 70px 20px;
+      text-align: center;
+      background: #1769ff;
+      color: white;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      color: #dce8ff;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      background: white;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">ReStartAI</div>
+
+    <nav>
+      <a href="#how">How It Works</a>
+      <a href="#jobs">Jobs</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <div class="badge">
+      AI-Powered Re-Employment Platform
+    </div>
+
+    <h1>
+      Your career gap shouldn't
+      <span>define your future.</span>
+    </h1>
+
+    <p class="hero-text">
+      ReStartAI helps people returning to work discover opportunities,
+      improve their CVs and restart their careers with confidence.
+    </p>
+
+    <div class="buttons">
+
+      <input
+        type="file"
+        id="cvUpload"
+        accept=".pdf,.doc,.docx"
+        hidden
+      >
+
+      <button
+        type="button"
+        class="primary"
+        id="uploadButton"
+      >
+        Upload Your CV
+      </button>
+
+      <button
+        type="button"
+        class="primary"
+        id="analyzeButton"
+      >
+        Analyze My CV
+      </button>
+
+      <button
+        type="button"
+        class="secondary"
+        onclick="document.getElementById('jobs').scrollIntoView()"
+      >
+        Explore Jobs
+      </button>
+
+      <div id="uploadStatus" class="status"></div>
+
+      <div id="analysisBox" class="analysis">
+
+        <h3>CV Analysis</h3>
+
+        <p id="analysisText">
+          Your CV is ready for analysis.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="features" id="how">
+
+    <h2>How ReStartAI Helps You</h2>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">📄</div>
+
+        <h3>AI CV Analysis</h3>
+
+        <p>
+          Upload your CV and prepare your career profile
+          for intelligent analysis.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-icon">🎯</div>
+
+        <h3>Smart Job Matching</h3>
+
+        <p>
+          Find opportunities that match your skills,
+          experience and career goals.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-icon">🤝</div>
+
+        <h3>Recruiter Connection</h3>
+
+        <p>
+          Connect with suitable recruiters and discover
+          new career opportunities.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="features" id="jobs">
+
+    <h2>Find Your Next Opportunity</h2>
+
+    <div
+      class="card"
+      style="max-width:700px; margin:auto; text-align:center;"
+    >
+
+      <h3>Smart Job Matching</h3>
+
+      <p>
+        ReStartAI will help match your skills and experience
+        with suitable employment opportunities.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>Ready to restart your career?</h2>
+
+    <p>
+      Your career gap is only one chapter — not your whole story.
+    </p>
+
+    <button
+      type="button"
+      class="secondary"
+      id="getStartedButton"
+    >
+      Get Started
+    </button>
+
+  </section>
+
+  <footer>
+    © 2026 ReStartAI — AI-powered re-employment platform
+  </footer>
+
+  <script>
+
+    const cvUpload = document.getElementById("cvUpload");
+    const uploadButton = document.getElementById("uploadButton");
+    const analyzeButton = document.getElementById("analyzeButton");
+    const getStartedButton = document.getElementById("getStartedButton");
+
+    const uploadStatus = document.getElementById("uploadStatus");
+    const analysisBox = document.getElementById("analysisBox");
+    const analysisText = document.getElementById("analysisText");
+
+    uploadButton.addEventListener("click", function () {
+      cvUpload.click();
+    });
+
+    getStartedButton.addEventListener("click", function () {
+      cvUpload.click();
+    });
+
+    cvUpload.addEventListener("change", function () {
+
+      if (cvUpload.files.length > 0) {
+
+        uploadStatus.textContent =
+          "Selected CV: " + cvUpload.files[0].name;
+
+        analysisBox.style.display = "none";
+
+      } else {
+
+        uploadStatus.textContent = "";
+
+      }
+
+    });
+
+    analyzeButton.addEventListener("click", function () {
+
+      if (cvUpload.files.length === 0) {
+
+        uploadStatus.textContent =
+          "Please upload your CV first.";
+
+        analysisBox.style.display = "none";
+
+        return;
+
+      }
+
+      analysisBox.style.display = "block";
+
+      analysisText.textContent =
+        "Your CV has been received successfully. " +
+        "AI-powered skills and experience analysis " +
+        "will be connected in the next development step.";
+
+    });
+
+  </script>
+
+</body>
+</html>
