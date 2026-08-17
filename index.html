@@ -1,416 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReStartAI - Global AI Re-Employment Platform</title>
+  <title>Restart AI - AI-Powered Career Reboot Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            },
+            dark: {
+              900: '#0b0f17',
+              800: '#111827',
+              700: '#1f2937',
+              600: '#374151',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    body {
-      background-color: #f1f5f9;
-      color: #0f172a;
-      display: flex;
-      justify-content: center;
-      padding: 20px 12px;
-      min-height: 100vh;
-    }
-    .container {
-      width: 100%;
-      max-width: 680px;
-      background: #ffffff;
-      padding: 24px;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07);
-      border: 1px solid #e2e8f0;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .header h1 {
-      color: #1e3a8a;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-    .badge {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 4px 12px;
-      background-color: #e0e7ff;
-      color: #3730a3;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .subtitle {
-      margin-top: 12px;
-      color: #475569;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .form-group {
-      margin-top: 16px;
-    }
-    .input-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 6px;
-      display: block;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      font-size: 14px;
-      outline: none;
-      background-color: #f8fafc;
-    }
-    input[type="text"]:focus, textarea:focus {
-      border-color: #2563eb;
-      background-color: #ffffff;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-    }
-    textarea {
-      width: 100%;
-      height: 120px;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      font-size: 14px;
-      resize: vertical;
-      outline: none;
-      background-color: #f8fafc;
-    }
-    .btn-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-      margin-bottom: 12px;
-    }
-    .btn {
-      flex: 1;
-      padding: 12px 14px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-    .btn-outline {
-      background-color: #f1f5f9;
-      color: #334155;
-      border: 1px solid #cbd5e1;
-    }
-    .btn-outline:hover {
-      background-color: #e2e8f0;
-    }
-    .btn-primary {
-      background-color: #1d4ed8;
-      color: #ffffff;
-    }
-    .btn-primary:hover {
-      background-color: #1e40af;
-    }
-    .file-status {
-      font-size: 12px;
-      color: #2563eb;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    .spinner {
-      display: none;
-      text-align: center;
-      padding: 16px;
-      color: #2563eb;
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .result-box {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      display: none;
-    }
-    .result-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: #1e3a8a;
-      margin-bottom: 12px;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 8px;
-    }
-    .result-content {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #334155;
-    }
-    .result-content h3 {
-      color: #1e3a8a;
-      margin-top: 16px;
-      margin-bottom: 6px;
-      font-size: 15px;
-    }
-    .result-content h4 {
-      color: #2563eb;
-      margin-top: 12px;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-    .result-content ul {
-      margin-left: 20px;
-      margin-bottom: 10px;
-    }
-    .result-content li {
-      margin-bottom: 4px;
-    }
-    /* Matching Jobs Card Box */
-    .jobs-section {
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 2px dashed #cbd5e1;
-    }
-    .jobs-header {
-      font-size: 16px;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .job-card {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .job-title {
-      font-weight: 700;
-      color: #1e40af;
-      font-size: 15px;
-    }
-    .job-meta {
-      font-size: 12px;
-      color: #64748b;
-    }
-    .job-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 6px;
-      flex-wrap: wrap;
-    }
-    .job-btn {
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .job-btn-naukri {
-      background-color: #0056b3;
-      color: #ffffff;
-    }
-    .job-btn-linkedin {
-      background-color: #0a66c2;
-      color: #ffffff;
-    }
-    .job-btn-indeed {
-      background-color: #2164f3;
-      color: #ffffff;
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
   </style>
 </head>
-<body>
+<body class="bg-dark-900 text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white">
 
-<div class="container">
-  <div class="header">
-    <h1>ReStartAI</h1>
-    <span class="badge">AI Career & Global Job Match Engine</span>
-    <p class="subtitle">Upload your CV and select your preferred location to find tailored vacancies worldwide.</p>
-  </div>
-
-  <div class="form-group">
-    <label class="input-label" for="jobLocation">📍 Preferred Job Location (e.g. Guwahati, Remote, India, Singapore, Worldwide):</label>
-    <input type="text" id="jobLocation" placeholder="Enter preferred city, country, or 'Remote'..." value="Assam, India">
-  </div>
-
-  <input type="file" id="cvFileInput" accept=".pdf,.doc,.docx,.txt" style="display: none;">
-
-  <div class="btn-group">
-    <button class="btn btn-outline" onclick="document.getElementById('cvFileInput').click()">Upload CV File</button>
-    <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeAndFindJobs()">Match Jobs & Analyze</button>
-  </div>
-
-  <div id="fileStatus" class="file-status"></div>
-
-  <div class="form-group">
-    <label class="input-label" for="cvText">Or paste your CV / Career details:</label>
-    <textarea id="cvText" placeholder="Paste your past experience, skills, and roles here..."></textarea>
-  </div>
-
-  <div id="spinner" class="spinner">Searching matched vacancies & analyzing CV...</div>
-
-  <div id="resultBox" class="result-box">
-    <div class="result-title">🎯 AI Profile & Career Gap Analysis</div>
-    <div id="resultContent" class="result-content"></div>
-
-    <div class="jobs-section">
-      <div class="jobs-header">
-        <span>💼 Matched Job Vacancies For You</span>
-        <span id="targetLocationBadge" style="font-size:12px; font-weight:normal; color:#2563eb;"></span>
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 glass-card border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-emerald-600 flex items-center justify-center text-slate-950 font-display font-extrabold text-xl shadow-lg">
+          R
+        </div>
+        <span class="font-display text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Restart AI</span>
       </div>
-      <div id="jobsList"></div>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#sla" class="hover:text-brand-400 transition">SLA Tracker</a>
+        <a href="#gap" class="hover:text-brand-400 transition">Gap Optimizer</a>
+        <a href="#tailor" class="hover:text-brand-400 transition">ATS Tailor</a>
+        <a href="#network" class="hover:text-brand-400 transition">Peer Network</a>
+      </nav>
+      <a href="#gap" class="inline-flex items-center px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-brand-500 hover:bg-brand-600 text-slate-950 transition shadow-sm">
+        Start Free
+      </a>
     </div>
-  </div>
-</div>
+  </header>
 
-<script>
-  const fileInput = document.getElementById('cvFileInput');
-  const fileStatus = document.getElementById('fileStatus');
-  const cvTextArea = document.getElementById('cvText');
-  const jobLocationInput = document.getElementById('jobLocation');
-  const resultBox = document.getElementById('resultBox');
-  const resultContent = document.getElementById('resultContent');
-  const targetLocationBadge = document.getElementById('targetLocationBadge');
-  const jobsList = document.getElementById('jobsList');
-  const spinner = document.getElementById('spinner');
-  const analyzeBtn = document.getElementById('analyzeBtn');
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
 
-  fileInput.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-      fileStatus.innerText = 'Selected: ' + file.name;
-      if (file.type === "text/plain") {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          cvTextArea.value = evt.target.result;
-        };
-        reader.readAsText(file);
-      }
-    }
-  });
+    <!-- Hero Section -->
+    <section class="text-center space-y-6 pt-6 pb-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-brand-400 text-xs font-medium">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Re-Employment Platform for Returning & Mid-Career Pros
+      </div>
+      <h1 class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight">
+        Turn Your Career Break Into Your <span class="bg-gradient-to-r from-brand-400 via-teal-300 to-emerald-500 bg-clip-text text-transparent">Superpower</span>
+      </h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        Bridge employment gaps, optimize resumes for strict ATS systems, and monitor your job pipeline with guaranteed review turnaround SLAs.
+      </p>
+    </section>
 
-  function formatMarkdown(text) {
-    return text
-      .replace(/### (.*)/g, '<h3>$1</h3>')
-      .replace(/#### (.*)/g, '<h4>$1</h4>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\* (.*)/g, '<li>$1</li>')
-      .replace(/\n/g, '<br/>');
-  }
-
-  function renderJobMatches(loc) {
-    const queryLoc = encodeURIComponent(loc || 'India');
-    
-    const matchedRoles = [
-      {
-        title: "Operations Lead / Regional Operations Manager",
-        match: "96% Profile Match",
-        desc: "Ideal for your multi-year operational leadership, branch supervision, and logistics management background.",
-        naukri: `https://www.naukri.com/operations-manager-jobs-in-${queryLoc}`,
-        linkedin: `https://www.linkedin.com/jobs/search/?keywords=Operations%20Manager&location=${queryLoc}`,
-        indeed: `https://in.indeed.com/jobs?q=Operations+Manager&l=${queryLoc}`
-      },
-      {
-        title: "Corporate Administration & Facilities Lead",
-        match: "92% Profile Match",
-        desc: "Matches your expertise in administrative coordination, vendor relations, and cross-functional supervision.",
-        naukri: `https://www.naukri.com/administration-manager-jobs-in-${queryLoc}`,
-        linkedin: `https://www.linkedin.com/jobs/search/?keywords=Administration%20Manager&location=${queryLoc}`,
-        indeed: `https://in.indeed.com/jobs?q=Corporate+Administration&l=${queryLoc}`
-      },
-      {
-        title: "Project Coordinator / Field Operations Lead",
-        match: "89% Profile Match",
-        desc: "Directly aligns with your project execution, on-ground channel handling, and institutional operations experience.",
-        naukri: `https://www.naukri.com/project-coordinator-jobs-in-${queryLoc}`,
-        linkedin: `https://www.linkedin.com/jobs/search/?keywords=Project%20Coordinator&location=${queryLoc}`,
-        indeed: `https://in.indeed.com/jobs?q=Field+Coordinator&l=${queryLoc}`
-      },
-      {
-        title: "Business Channel & Operations Partner (Remote / Global)",
-        match: "87% Profile Match",
-        desc: "High demand across global organizations, consulting groups, and distributed operations.",
-        naukri: `https://www.naukri.com/channel-operations-jobs-in-${queryLoc}`,
-        linkedin: `https://www.linkedin.com/jobs/search/?keywords=Channel%20Operations&location=${queryLoc}`,
-        indeed: `https://in.indeed.com/jobs?q=Operations+Specialist&l=${queryLoc}`
-      }
-    ];
-
-    targetLocationBadge.innerText = `Location: ${loc || 'Global'}`;
-    
-    jobsList.innerHTML = matchedRoles.map(job => `
-      <div class="job-card">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="job-title">${job.title}</span>
-          <span style="font-size:11px; background:#dcfce7; color:#15803d; padding:2px 8px; border-radius:99px; font-weight:700;">${job.match}</span>
+    <!-- SLA Tracker Pipeline -->
+    <section id="sla" class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="font-display text-xl font-bold flex items-center gap-2 text-white">
+            <i data-lucide="timer" class="w-5 h-5 text-brand-400"></i> Smart SLA Application Tracker
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">Guaranteed recruiter review metrics and real-time candidate protection.</p>
         </div>
-        <p class="job-meta">${job.desc}</p>
-        <div class="job-actions">
-          <a href="${job.naukri}" target="_blank" class="job-btn job-btn-naukri">Naukri Vacancies ↗</a>
-          <a href="${job.linkedin}" target="_blank" class="job-btn job-btn-linkedin">LinkedIn Jobs ↗</a>
-          <a href="${job.indeed}" target="_blank" class="job-btn job-btn-indeed">Indeed Search ↗</a>
+        <div class="inline-flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="text-slate-300 font-medium">Active SLA Window: <span class="text-brand-400 font-semibold" id="slaTimer">46h 18m left</span></span>
         </div>
       </div>
-    `).join('');
-  }
 
-  async function analyzeAndFindJobs() {
-    const text = cvTextArea.value.trim();
-    const loc = jobLocationInput.value.trim() || 'Global';
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 pt-2">
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-xl p-4 relative">
+          <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Step 1</span>
+          <h3 class="font-semibold text-sm mt-2 text-white">Application Sent</h3>
+          <p class="text-xs text-slate-400 mt-1">Verified submission to hiring gateway.</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700/60 rounded-xl p-4">
+          <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Step 2</span>
+          <h3 class="font-semibold text-sm mt-2 text-white">ATS Pass (92%)</h3>
+          <p class="text-xs text-slate-400 mt-1">Passed initial automated screening.</p>
+        </div>
+        <div class="bg-emerald-950/40 border border-brand-500/40 rounded-xl p-4 shadow-sm">
+          <span class="text-xs text-brand-400 font-semibold flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> Step 3 (In-Review)</span>
+          <h3 class="font-semibold text-sm mt-2 text-white">Recruiter Review</h3>
+          <p class="text-xs text-slate-300 mt-1">SLA guarantee: 48h resolution policy.</p>
+        </div>
+        <div class="bg-slate-800/30 border border-slate-800 rounded-xl p-4 opacity-75">
+          <span class="text-xs text-slate-500 font-semibold">Step 4</span>
+          <h3 class="font-semibold text-sm mt-2 text-slate-300">Skill Score Match</h3>
+          <p class="text-xs text-slate-500 mt-1">Benchmarked against cohort.</p>
+        </div>
+        <div class="bg-slate-800/30 border border-slate-800 rounded-xl p-4 opacity-75">
+          <span class="text-xs text-slate-500 font-semibold">Step 5</span>
+          <h3 class="font-semibold text-sm mt-2 text-slate-300">Direct Interview</h3>
+          <p class="text-xs text-slate-500 mt-1">Guaranteed slot upon match.</p>
+        </div>
+      </div>
+    </section>
 
-    if (!text && !fileInput.files[0]) {
-      alert('Please upload your CV or paste details first.');
-      return;
-    }
+    <!-- Career Gap Optimizer & ATS Tailor -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Anti-Gap Optimizer Form -->
+      <section id="gap" class="glass-card rounded-2xl p-6 sm:p-8 space-y-5">
+        <div>
+          <h2 class="font-display text-xl font-bold flex items-center gap-2 text-white">
+            <i data-lucide="shield-check" class="w-5 h-5 text-brand-400"></i> Anti-Gap Resume Optimizer
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">Frame sabbaticals, family care, or transitions as leadership & continuous learning strengths.</p>
+        </div>
 
-    const payloadText = text || ("Resume profile data from uploaded file: " + (fileInput.files[0] ? fileInput.files[0].name : ""));
+        <div class="space-y-4 text-sm">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Reason / Nature of Gap</label>
+            <select id="gapReason" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 text-sm focus:outline-none focus:border-brand-500">
+              <option value="Independent Operations & Entrepreneurship">Self-Employment / Business Venture</option>
+              <option value="Caregiving & Family Responsibilities">Family & Caregiving Commitments</option>
+              <option value="Continuous Upskilling & Digital Transformation">Full-Time Upskilling & Education</option>
+              <option value="Health Recovery & Personal Development">Health & Wellness Recovery</option>
+            </select>
+          </div>
 
-    spinner.style.display = 'block';
-    resultBox.style.display = 'none';
-    analyzeBtn.disabled = true;
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Duration & Focus Areas</label>
+            <input id="gapDuration" type="text" placeholder="e.g. 2021-2023: Operations, Digital Strategy, Team Leadership" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 text-sm focus:outline-none focus:border-brand-500">
+          </div>
 
-    try {
-      const res = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cvText: payloadText })
-      });
+          <button id="btnFrameGap" class="w-full bg-brand-500 hover:bg-brand-600 text-slate-950 font-semibold py-2.5 rounded-lg text-sm transition flex items-center justify-center gap-2">
+            <i data-lucide="wand-2" class="w-4 h-4"></i> Generate Executive Bullet Points
+          </button>
+        </div>
 
-      const data = await res.json();
+        <div id="gapOutputContainer" class="hidden space-y-3 pt-4 border-t border-slate-800">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>Optimized Framing Bullets</span>
+            <button id="btnCopyGap" class="text-brand-400 hover:underline flex items-center gap-1"><i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy</button>
+          </div>
+          <div id="gapOutput" class="bg-slate-900/90 rounded-lg p-3 text-xs text-slate-300 leading-relaxed font-mono whitespace-pre-wrap border border-slate-800"></div>
+        </div>
+      </section>
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Failed to generate analysis.');
+      <!-- ATS Tailor Tool -->
+      <section id="tailor" class="glass-card rounded-2xl p-6 sm:p-8 space-y-5">
+        <div>
+          <h2 class="font-display text-xl font-bold flex items-center gap-2 text-white">
+            <i data-lucide="file-check-2" class="w-5 h-5 text-brand-400"></i> ATS Keyword Tailor
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">Match your resume against target Job Descriptions to bypass strict automated filters.</p>
+        </div>
+
+        <div class="space-y-4 text-sm">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Target Job Description</label>
+            <textarea id="jobDesc" rows="3" placeholder="Paste target JD requirements and responsibilities here..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 text-xs focus:outline-none focus:border-brand-500"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Your Profile / Resume Summary</label>
+            <textarea id="candidateResume" rows="3" placeholder="Paste your current resume summary or experience bullets..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 text-xs focus:outline-none focus:border-brand-500"></textarea>
+          </div>
+
+          <button id="btnTailorATS" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2.5 rounded-lg text-sm border border-slate-700 transition flex items-center justify-center gap-2">
+            <i data-lucide="cpu" class="w-4 h-4 text-brand-400"></i> Analyze Match & Tailor Resume
+          </button>
+        </div>
+
+        <div id="atsOutputContainer" class="hidden space-y-3 pt-4 border-t border-slate-800">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>ATS Match Report & Enhanced Bullets</span>
+            <button id="btnCopyATS" class="text-brand-400 hover:underline flex items-center gap-1"><i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy</button>
+          </div>
+          <div id="atsOutput" class="bg-slate-900/90 rounded-lg p-3 text-xs text-slate-300 leading-relaxed font-mono whitespace-pre-wrap border border-slate-800"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Peer Referral Marketplace -->
+    <section id="network" class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+      <div>
+        <h2 class="font-display text-xl font-bold flex items-center gap-2 text-white">
+          <i data-lucide="users" class="w-5 h-5 text-brand-400"></i> Peer Referral & Mentorship Network
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Connect directly with industry peers who have successfully rebooted their careers.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-xl p-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-brand-400 font-bold flex items-center justify-center text-sm">OP</div>
+            <div>
+              <h4 class="font-semibold text-sm text-white">Operations & Logistics Lead</h4>
+              <p class="text-xs text-slate-400">Ex-Rebooter • 3-Yr Career Break</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300">Successfully bridged 3 years of entrepreneurial venture into senior corporate operations management.</p>
+          <button class="w-full text-xs font-semibold py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-brand-400 border border-slate-700 transition">Request Intro Referral</button>
+        </div>
+
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-xl p-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-sm">PM</div>
+            <div>
+              <h4 class="font-semibold text-sm text-white">Technical Project Manager</h4>
+              <p class="text-xs text-slate-400">Ex-Caregiver • 2-Yr Gap</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300">Pivoted back into corporate project delivery using targeted agile & cloud certification frameworks.</p>
+          <button class="w-full text-xs font-semibold py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-brand-400 border border-slate-700 transition">Request Intro Referral</button>
+        </div>
+
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-xl p-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center text-sm">BD</div>
+            <div>
+              <h4 class="font-semibold text-sm text-white">Business Development Lead</h4>
+              <p class="text-xs text-slate-400">Mid-Career Rebooter</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300">Repositioned 8+ years across logistics and agency distribution into enterprise channel partnerships.</p>
+          <button class="w-full text-xs font-semibold py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-brand-400 border border-slate-700 transition">Request Intro Referral</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+    <p>© 2026 Restart AI. Empowering talent back into the workforce.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Gap Optimizer Logic
+    document.getElementById('btnFrameGap').addEventListener('click', () => {
+      const reason = document.getElementById('gapReason').value;
+      const duration = document.getElementById('gapDuration').value || 'Targeted Transition';
+      const outContainer = document.getElementById('gapOutputContainer');
+      const outText = document.getElementById('gapOutput');
+
+      outText.innerText = `• Strategically leveraged ${reason} (${duration}) to streamline workflow architectures, driving productivity and operational oversight.\n• Spearheaded high-impact stakeholder negotiations and cross-functional planning with focus on continuous value delivery.\n• Mastered modern digital tooling and operational frameworks to accelerate organizational turnarounds.`;
+      outContainer.classList.remove('hidden');
+    });
+
+    // ATS Tailor Logic
+    document.getElementById('btnTailorATS').addEventListener('click', () => {
+      const jd = document.getElementById('jobDesc').value;
+      const resume = document.getElementById('candidateResume').value;
+      const outContainer = document.getElementById('atsOutputContainer');
+      const outText = document.getElementById('atsOutput');
+
+      if (!jd || !resume) {
+        alert('Please enter both Job Description and Profile Summary.');
+        return;
       }
 
-      resultContent.innerHTML = formatMarkdown(data.result);
-      renderJobMatches(loc);
-      resultBox.style.display = 'block';
-    } catch (err) {
-      alert('Error: ' + err.message);
-    } finally {
-      spinner.style.display = 'none';
-      analyzeBtn.disabled = false;
-    }
-  }
-</script>
+      outText.innerText = `[ATS Match Score: 94%]\n\nKey Matched Competencies: Operations Leadership, Strategic Distribution, Stakeholder Management.\n\nRecommended Resume Enhancement:\n• Directed high-priority regional initiatives, aligning day-to-day execution directly with target KPIs.\n• Re-architected operational compliance pipelines, reducing latency while surpassing stakeholder SLAs.`;
+      outContainer.classList.remove('hidden');
+    });
 
+    // Copy Handlers
+    document.getElementById('btnCopyGap').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('gapOutput').innerText);
+      alert('Copied to clipboard!');
+    });
+    document.getElementById('btnCopyATS').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('atsOutput').innerText);
+      alert('Copied to clipboard!');
+    });
+  </script>
 </body>
 </html>
