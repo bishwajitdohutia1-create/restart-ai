@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restart AI - Global Talent Ecosystem & ATS Studio</title>
+  <title>Restart AI - Ultimate Global Talent Ecosystem & ATS Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
@@ -43,7 +43,7 @@
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h2>
       <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Complete profile builder with education & visa status, ATS-friendly CV maker with instant copy option, advanced worldwide job discovery with filters, and verified company ledgers.
+        Complete profile builder with education & visa status, ATS-friendly CV maker with instant copy functionality, advanced worldwide job discovery with filters, and verified company ledgers.
       </p>
     </section>
 
@@ -194,12 +194,13 @@
       </div>
 
       <div class="flex flex-col md:flex-row gap-3">
-        <input type="text" id="locationSearch" list="worldCities" placeholder="🌍 Type Location (e.g. Guwahati, London)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs">
+        <input type="text" id="locationSearch" list="worldCities" placeholder="🌍 Type any letter (e.g. G, T, D, L)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs">
         <datalist id="worldCities">
           <option value="Guwahati, Assam, India">
           <option value="Tinsukia, Assam, India">
           <option value="Dibrugarh, Assam, India">
           <option value="Gangtok, Sikkim, India">
+          <option value="Shillong, Meghalaya, India">
           <option value="London, United Kingdom">
           <option value="New York, United States">
           <option value="Singapore">
@@ -318,7 +319,6 @@ ATS COMPLIANCE: 98% COMPLIANT (PARSER READY)
       alert('ATS-Friendly CV generated successfully!');
     }
 
-    // Function to Copy ATS CV Content to Clipboard
     function copyAtsCv() {
       const textToCopy = document.getElementById('atsPreviewBox').innerText;
       navigator.clipboard.writeText(textToCopy).then(() => {
