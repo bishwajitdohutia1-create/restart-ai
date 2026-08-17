@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ReStartAI - Restart Your Career</title>
 
   <style>
@@ -86,6 +87,7 @@
       cursor: pointer;
       font-weight: bold;
       margin: 5px;
+      font-size: 15px;
     }
 
     .primary {
@@ -130,6 +132,12 @@
     .card p {
       color: #667085;
       line-height: 1.6;
+    }
+
+    .upload-status {
+      margin-top: 15px;
+      color: #1769ff;
+      font-weight: bold;
     }
 
     .cta {
@@ -179,9 +187,9 @@
     <div class="logo">ReStartAI</div>
 
     <nav>
-      <a href="#">How It Works</a>
-      <a href="#">For Candidates</a>
-      <a href="#">For Recruiters</a>
+      <a href="#how">How It Works</a>
+      <a href="#candidates">For Candidates</a>
+      <a href="#recruiters">For Recruiters</a>
     </nav>
   </header>
 
@@ -202,13 +210,35 @@
     </p>
 
     <div class="buttons">
-      <button class="primary">Upload Your CV</button>
-      <button class="secondary">Explore Jobs</button>
+
+      <input
+        type="file"
+        id="cvUpload"
+        accept=".pdf,.doc,.docx"
+        style="display: none;"
+      >
+
+      <button
+        class="primary"
+        onclick="document.getElementById('cvUpload').click()"
+      >
+        Upload Your CV
+      </button>
+
+      <button
+        class="secondary"
+        onclick="document.getElementById('jobs').scrollIntoView()"
+      >
+        Explore Jobs
+      </button>
+
+      <div id="uploadStatus" class="upload-status"></div>
+
     </div>
 
   </section>
 
-  <section class="features">
+  <section class="features" id="how">
 
     <h2>How ReStartAI Helps You</h2>
 
@@ -245,6 +275,20 @@
 
   </section>
 
+  <section class="features" id="jobs">
+
+    <h2>Find Your Next Opportunity</h2>
+
+    <div class="card" style="max-width: 700px; margin: auto; text-align: center;">
+      <h3>Smart Job Matching</h3>
+      <p>
+        ReStartAI will help match your skills and experience
+        with suitable employment opportunities.
+      </p>
+    </div>
+
+  </section>
+
   <section class="cta">
 
     <h2>Ready to restart your career?</h2>
@@ -253,7 +297,10 @@
       Your career gap is only one chapter — not your whole story.
     </p>
 
-    <button class="secondary">
+    <button
+      class="secondary"
+      onclick="document.getElementById('cvUpload').click()"
+    >
       Get Started
     </button>
 
@@ -262,6 +309,18 @@
   <footer>
     © 2026 ReStartAI — AI-powered re-employment platform
   </footer>
+
+  <script>
+    document.getElementById("cvUpload").addEventListener("change", function() {
+      const status = document.getElementById("uploadStatus");
+
+      if (this.files.length > 0) {
+        status.textContent = "Selected CV: " + this.files[0].name;
+      } else {
+        status.textContent = "";
+      }
+    });
+  </script>
 
 </body>
 </html>
