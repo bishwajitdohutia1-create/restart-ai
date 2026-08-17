@@ -8,11 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; color: #f8fafc; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #0b1526; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
   </style>
 </head>
 <body class="min-h-screen pb-20">
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <nav class="border-b border-slate-800 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 py-4 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center font-black text-slate-950 text-xl shadow-lg">R</div>
@@ -21,15 +24,32 @@
         <p class="text-[9px] text-emerald-400 font-bold uppercase tracking-widest">Global Talent Ecosystem</p>
       </div>
     </div>
+    <div class="flex items-center gap-2">
+      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-slate-300 font-bold">🔍 Jobs</button>
+      <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 Profile</button>
+    </div>
   </nav>
 
-  <main class="max-w-2xl mx-auto px-4 pt-10 space-y-8">
+  <main class="max-w-4xl mx-auto px-4 pt-10 space-y-12">
     
-    <!-- Experience & Profile Form Section -->
-    <section class="bg-slate-900 border border-purple-500/30 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
+    <!-- Hero / Home Page Section -->
+    <section class="text-center space-y-4 py-6">
+      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
+        Fair Talent & Career Reboot Platform
+      </span>
+      <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
+        Eliminating Career-Gap Penalties & Recruiter Ghosting.
+      </h2>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto">
+        Build your professional profile with company experience, job roles, gap details, and connect with global opportunities.
+      </p>
+    </section>
+
+    <!-- Professional Experience Details Section -->
+    <section id="profileSection" class="bg-slate-900 border border-purple-500/30 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="border-b border-slate-800 pb-4">
-        <h2 class="text-xl font-bold text-white">Professional Experience Details</h2>
-        <p class="text-xs text-slate-400 mt-1">Add your career history, roles, and responsibilities</p>
+        <h3 class="text-xl font-bold text-white">Professional Experience Details</h3>
+        <p class="text-xs text-slate-400 mt-1">Add your career history, company name, roles, and responsibilities</p>
       </div>
       
       <form id="experienceForm" onsubmit="saveFullProfile(event)" class="space-y-4">
@@ -65,6 +85,20 @@
         <h3 class="text-xs font-bold text-purple-400 uppercase">Published Profile:</h3>
         <div id="profilesList" class="space-y-3"></div>
       </div>
+    </section>
+
+    <!-- Job Search Section -->
+    <section id="jobsSection" class="bg-slate-900 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h3 class="text-xl font-bold text-white">Global Job Search</h3>
+        <p class="text-xs text-slate-400 mt-1">Search verified career opportunities</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <input type="text" id="keywordSearch" placeholder="Role / Keyword..." class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+        <input type="text" id="locationSearch" placeholder="Location..." class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+      </div>
+      <button onclick="filterLiveJobs()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs py-3 rounded-xl transition">Search Jobs</button>
+      <div id="jobsGrid" class="grid grid-cols-1 gap-4 pt-2"></div>
     </section>
   </main>
 
@@ -110,6 +144,14 @@
           </div>
         `).join('');
       }
+    }
+
+    function filterLiveJobs() {
+      alert("Searching jobs across global databases...");
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
     window.onload = function() {
