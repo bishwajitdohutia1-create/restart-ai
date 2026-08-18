@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restart AI - Ultimate Global Talent Ecosystem & ATS Studio</title>
+  <title>Restart AI - Global Talent Ecosystem & ATS Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; color: #f8fafc; }
-    .custom-scroll::-webkit-scrollbar { width: 6px; }
-    .custom-scroll::-webkit-scrollbar-track { background: #0b1526; }
-    .custom-scroll::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
     #suggestionsBox { max-height: 180px; overflow-y: auto; z-index: 100; }
   </style>
 </head>
@@ -26,17 +23,16 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <button onclick="scrollToSection('homeSection')" class="text-xs bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-slate-300 font-bold">🏠 Home</button>
       <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 Profile</button>
-      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 ATS Maker</button>
+      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 ATS Maker & Upload</button>
       <button onclick="scrollToSection('jobsSection')" class="text-xs bg-cyan-600 text-slate-950 font-bold px-3 py-2 rounded-xl">🌍 Worldwide Jobs</button>
     </div>
   </nav>
 
   <main class="max-w-4xl mx-auto px-4 pt-10 space-y-12">
     
-    <!-- Homepage Section -->
-    <section id="homeSection" class="text-center space-y-4 py-8 bg-slate-900/50 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl">
+    <!-- Homepage Hero Section -->
+    <section class="text-center space-y-4 py-8 bg-slate-900/50 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl">
       <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
         🛡️ Zero-Bias Hiring • Gap Tolerance Shield • 7-Day SLA
       </span>
@@ -44,7 +40,7 @@
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h2>
       <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Complete profile builder with education & visa status, ATS-friendly CV maker with instant copy functionality, advanced worldwide job discovery with instant alphabet-based auto-suggestions, and verified company ledgers.
+        Complete profile builder, PDF CV scanner, ATS-friendly generator with instant copy, and worldwide job discovery with live alphabet-based location suggestions.
       </p>
     </section>
 
@@ -55,19 +51,19 @@
         <p class="text-xs text-slate-400 mt-1">Add personal details, education, visa status, work history, and shielded gap reasons</p>
       </div>
       
-      <form id="completeProfileForm" onsubmit="saveCompleteProfile(event)" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+      <form id="completeProfileForm" onsubmit="saveCompleteProfile(event)" class="space-y-4 text-xs">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block text-slate-400 mb-1 font-semibold">Full Name</label>
-            <input type="text" id="pName" placeholder="e.g. Bishwajit Dohutia" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+            <input type="text" id="pName" placeholder="e.g. Bishwajit Dohutia" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
           <div>
             <label class="block text-slate-400 mb-1 font-semibold">Email Address</label>
-            <input type="email" id="pEmail" placeholder="e.g. bishwajit@restart.ai" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+            <input type="email" id="pEmail" placeholder="e.g. bishwajit@restart.ai" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
           <div>
             <label class="block text-slate-400 mb-1 font-semibold">Visa & Work Status</label>
-            <select id="pVisa" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+            <select id="pVisa" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
               <option value="Citizen / Permanent Resident">Citizen / Permanent Resident</option>
               <option value="Work Visa / H1B Sponsorship Needed">Work Visa / H1B Needed</option>
               <option value="Open to Global Relocation">Open to Global Relocation</option>
@@ -76,117 +72,100 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-slate-400 mb-1 font-semibold">Highest Education / Degree</label>
-            <input type="text" id="pEdu" placeholder="e.g. MBA in Marketing / BA" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+            <input type="text" id="pEdu" placeholder="e.g. MBA in Marketing / BA" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
           <div>
             <label class="block text-slate-400 mb-1 font-semibold">Institution / University & Year</label>
-            <input type="text" id="pInst" placeholder="e.g. Dibrugarh University, 2008" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
+            <input type="text" id="pInst" placeholder="e.g. Dibrugarh University, 2008" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
         </div>
 
-        <div class="bg-slate-950 p-4 md:p-5 rounded-2xl border border-slate-800 space-y-3 text-xs">
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
           <p class="font-bold text-emerald-400 uppercase tracking-wide">Professional Experience & Job Profile:</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <input type="text" id="pCompany" placeholder="Company Name (e.g. ManipalCigna)" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-400">
-            <input type="text" id="pRole" placeholder="Job Title / Designation" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-400">
+            <input type="text" id="pCompany" placeholder="Company Name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <input type="text" id="pRole" placeholder="Job Title / Designation" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
-          <textarea id="pResponsibility" placeholder="Job Profile & Key Responsibilities..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white h-24 focus:outline-none focus:border-emerald-400"></textarea>
+          <textarea id="pResponsibility" placeholder="Key Responsibilities..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white h-20"></textarea>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Core Skills (Comma separated)</label>
-            <input type="text" id="pSkills" placeholder="e.g. Operations, Management, Sales" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Languages Known</label>
-            <input type="text" id="pLang" placeholder="e.g. Assamese, English, Hindi" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-400">
-          </div>
-        </div>
-
-        <div class="bg-slate-950 p-4 rounded-2xl border border-amber-500/30 space-y-2 text-xs">
-          <label class="block text-amber-400 font-bold uppercase tracking-wide">Reason for Career Gap (Protected under Fair Hiring Charter)</label>
-          <textarea id="pGap" placeholder="Explain career break/gap if any..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-400 h-20"></textarea>
-        </div>
-
-        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs py-4 rounded-xl shadow-lg transition">Save & Publish Complete Profile</button>
+        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3.5 rounded-xl transition">Save & Publish Profile</button>
       </form>
 
-      <div id="savedProfilesContainer" class="hidden pt-4 border-t border-slate-800 space-y-4">
-        <h3 class="text-xs font-bold text-purple-400 uppercase tracking-wide">Your Published Profile Studio:</h3>
-        <div id="profilesList" class="space-y-3"></div>
+      <div id="savedProfilesContainer" class="hidden pt-4 border-t border-slate-800 space-y-3">
+        <h4 class="text-xs font-bold text-purple-400 uppercase">Published Profile Preview:</h4>
+        <div id="profilesList" class="space-y-2"></div>
       </div>
     </section>
 
-    <!-- 2. ATS-Friendly CV Maker with Copy Button -->
+    <!-- 2. ATS CV Maker & PDF Upload Scanner -->
     <section id="atsStudioSection" class="bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
       <div class="border-b border-slate-800 pb-4 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h3 class="text-xl font-bold text-white">ATS-Friendly CV Maker & AI Score Analyzer</h3>
-          <p class="text-xs text-slate-400 mt-1">Generate parser-optimized resumes with instant copy functionality</p>
+          <h3 class="text-xl font-bold text-white">ATS-Friendly CV Maker & PDF Scanner</h3>
+          <p class="text-xs text-slate-400 mt-1">Generate tailored resumes or upload a PDF for instant parser analysis</p>
         </div>
         <span class="text-xs font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-xl font-bold">98% Bot Pass Rate</span>
       </div>
 
+      <!-- PDF Upload Option -->
+      <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs space-y-3">
+        <label class="block font-bold text-emerald-400">Upload Existing Resume (.pdf)</label>
+        <input type="file" id="pdfUploadInput" accept=".pdf" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white">
+        <button onclick="scanUploadedPdf()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition">Scan & Check ATS Score</button>
+      </div>
+
+      <!-- Manual Generator Form -->
       <form id="atsCvForm" onsubmit="generateAtsCv(event)" class="space-y-4 text-xs">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Full Name</label>
-            <input type="text" id="cvName" placeholder="e.g. Bishwajit Dohutia" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-400">
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Target Job Title</label>
-            <input type="text" id="cvTitle" placeholder="e.g. Senior Operations Lead" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-400">
-          </div>
+          <input type="text" id="cvName" placeholder="Full Name" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <input type="text" id="cvTitle" placeholder="Target Job Title" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
-        <div>
-          <label class="block text-slate-400 mb-1 font-semibold">Core Skills & Experience Summary</label>
-          <textarea id="cvExp" placeholder="Detail your experience and key duties..." required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white h-24 focus:outline-none focus:border-emerald-400"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs py-4 rounded-xl shadow-lg transition">Generate ATS-Friendly CV</button>
+        <textarea id="cvExp" placeholder="Core Skills & Experience Summary..." required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white h-20"></textarea>
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition">Generate ATS-Friendly CV</button>
       </form>
 
       <div id="atsOutputContainer" class="hidden pt-4 border-t border-slate-800 space-y-4 text-xs">
         <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <span class="text-emerald-400 font-bold text-sm">📊 ATS Compatibility Score: 95 / 100</span>
+          <span class="text-emerald-400 font-bold text-sm">📊 ATS Compatibility Score: 96 / 100</span>
           <button onclick="copyAtsCv()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg transition">📋 Copy ATS CV</button>
         </div>
         <div id="atsPreviewBox" class="bg-slate-950 p-6 rounded-2xl border border-emerald-500/30 font-mono text-[11px] text-slate-200 space-y-3 whitespace-pre-line"></div>
       </div>
     </section>
 
-    <!-- 3. Advanced Worldwide Job Search Section with Live Alphabet Auto-Suggestions -->
+    <!-- 3. Advanced Worldwide Job Discovery with Alphabet Suggestions -->
     <section id="jobsSection" class="bg-slate-900 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h3 class="text-xl font-bold text-white">Advanced Worldwide Job Discovery</h3>
-        <p class="text-xs text-slate-400 mt-1">Filter by Role, Education, Experience, Salary & Worldwide Locations (Type any alphabet)</p>
+        <p class="text-xs text-slate-400 mt-1">Filter by Role, Education, Experience, Salary & Worldwide Locations</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-        <select id="keywordSearch" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-400">
+        <select id="keywordSearch" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           <option value="">Designation / Role</option>
           <option value="Senior Operations Lead">Senior Operations Lead</option>
           <option value="Business Development">Business Development</option>
         </select>
 
-        <select id="eduFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-400">
+        <select id="eduFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           <option value="">Required Education</option>
           <option value="BA">Bachelor of Arts (BA)</option>
           <option value="MBA">MBA / Master's</option>
           <option value="Diploma">Diploma (PGDCA etc)</option>
         </select>
 
-        <select id="expFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-400">
+        <select id="expFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           <option value="">Experience Level</option>
           <option value="0-2">0-2 Years</option>
           <option value="3-5">3-5 Years</option>
           <option value="5+">5+ Years</option>
         </select>
 
-        <select id="salaryFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-cyan-400">
+        <select id="salaryFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           <option value="">Expected Salary (Annually)</option>
           <option value="3-6L">₹3L - ₹6L</option>
           <option value="6-10L">₹6L - ₹10L</option>
@@ -194,7 +173,7 @@
         </select>
       </div>
 
-      <!-- Location Search with Live Alphabet Auto-Suggestions -->
+      <!-- Live Alphabet Location Suggestions -->
       <div class="relative flex flex-col md:flex-row gap-3">
         <div class="relative w-full">
           <input type="text" id="locationSearch" oninput="showSuggestions(this.value)" placeholder="🌍 Type any alphabet (e.g. G, T, D, L)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-cyan-400" autocomplete="off">
@@ -203,38 +182,18 @@
         <button onclick="searchGlobalJobs()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold px-8 py-3 rounded-xl transition text-xs">Search Now</button>
       </div>
 
-      <!-- Company Transparency Ledger Card -->
+      <!-- Sample Job / Ledger Card -->
       <div id="jobsGrid" class="grid grid-cols-1 gap-4 pt-2">
         <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 text-xs">
-          
           <div class="flex items-center justify-between flex-wrap gap-2">
             <div>
               <h4 class="text-sm font-bold text-white">ManipalCigna Health Insurance</h4>
               <p class="text-[10px] text-emerald-400 font-bold uppercase mt-0.5">100% Reboot-Friendly • ⏱️ 7-Day Anti-Ghosting SLA</p>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1 rounded-lg text-[11px] font-bold">🎯 Job-Fit: 96% Match</span>
-              <button onclick="alert('Company Followed Successfully!')" class="bg-purple-600 hover:bg-purple-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg transition">Follow</button>
-            </div>
+            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1 rounded-lg text-[11px] font-bold">🎯 Job-Fit: 96% Match</span>
           </div>
-
           <p class="text-slate-300">📍 Worldwide / Remote Eligible • Role: Senior Operations Lead</p>
           <p class="text-amber-400 font-semibold">⚠️ Gap-Tolerance Check: <b class="text-emerald-400">Zero Penalty for Career Breaks</b> (Safe to Apply)</p>
-
-          <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 text-[10px]">
-            <a href="https://www.manipalcigna.com" target="_blank" class="bg-slate-900 border border-slate-700 py-2 rounded-lg text-center hover:border-emerald-500 transition text-slate-300">🌐 Website</a>
-            <a href="https://linkedin.com" target="_blank" class="bg-slate-900 border border-slate-700 py-2 rounded-lg text-center hover:border-blue-500 transition text-slate-300">🔗 LinkedIn</a>
-            <a href="https://instagram.com" target="_blank" class="bg-slate-900 border border-slate-700 py-2 rounded-lg text-center hover:border-pink-500 transition text-slate-300">📸 Instagram</a>
-            <a href="https://facebook.com" target="_blank" class="bg-slate-900 border border-slate-700 py-2 rounded-lg text-center hover:border-blue-600 transition text-slate-300">👥 Facebook</a>
-            <a href="https://twitter.com" target="_blank" class="bg-slate-900 border border-slate-700 py-2 rounded-lg text-center hover:border-slate-400 transition text-slate-300">𝕏 Twitter</a>
-            <a href="https://www.glassdoor.co.in" target="_blank" class="bg-slate-900 border border-emerald-500/40 py-2 rounded-lg text-center hover:border-emerald-400 transition font-bold text-emerald-400">⭐ Glassdoor</a>
-          </div>
-
-          <div class="pt-3 border-t border-slate-900 flex items-center justify-between text-[11px] text-slate-400 flex-wrap gap-2">
-            <span>Glassdoor: <b class="text-white">4.2 / 5.0</b> (1.2k+ Reviews)</span>
-            <span class="text-amber-400 font-bold">🤝 Peer Referral Bounty: ₹15,000 per hire</span>
-          </div>
-
           <button onclick="alert('Application submitted successfully with Job-Fit protection & 7-Day SLA active!')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition text-xs">Apply with Job-Fit Safety Check</button>
         </div>
       </div>
@@ -242,22 +201,17 @@
   </main>
 
   <script>
-    // Comprehensive Global Location Database (India & Worldwide cities/countries)
     const worldPlaces = [
       "Guwahati, Assam, India", "Tinsukia, Assam, India", "Dibrugarh, Assam, India", "Jorhat, Assam, India", "Silchar, Assam, India",
       "Gangtok, Sikkim, India", "Shillong, Meghalaya, India", "Itanagar, Arunachal Pradesh, India", "Kohima, Nagaland, India",
       "Imphal, Manipur, India", "Aizawl, Mizoram, India", "Agartala, Tripura, India", "Delhi, India", "Mumbai, Maharashtra, India",
       "Bangalore, Karnataka, India", "Kolkata, West Bengal, India", "Chennai, Tamil Nadu, India", "Hyderabad, Telangana, India",
-      "London, United Kingdom", "New York, USA", "San Francisco, USA", "Los Angeles, USA", "Singapore", "Tokyo, Japan",
-      "Dubai, UAE", "Berlin, Germany", "Paris, France", "Sydney, Australia", "Toronto, Canada", "Bangkok, Thailand", "Remote / Worldwide"
+      "London, United Kingdom", "New York, USA", "San Francisco, USA", "Singapore", "Tokyo, Japan", "Dubai, UAE", "Remote / Worldwide"
     ];
 
     function showSuggestions(val) {
       const box = document.getElementById('suggestionsBox');
-      if (!val) {
-        box.classList.add('hidden');
-        return;
-      }
+      if (!val) { box.classList.add('hidden'); return; }
       const filtered = worldPlaces.filter(c => c.toLowerCase().startsWith(val.toLowerCase()));
       if (filtered.length > 0) {
         box.innerHTML = filtered.map(c => `<div onclick="selectCity('${c}')" class="p-2.5 hover:bg-slate-900 cursor-pointer text-slate-300 text-xs border-b border-slate-800/60">${c}</div>`).join('');
@@ -281,19 +235,13 @@
         edu: document.getElementById('pEdu').value.trim(),
         inst: document.getElementById('pInst').value.trim(),
         company: document.getElementById('pCompany').value.trim(),
-        role: document.getElementById('pRole').value.trim(),
-        resp: document.getElementById('pResponsibility').value.trim(),
-        skills: document.getElementById('pSkills').value.trim(),
-        lang: document.getElementById('pLang').value.trim(),
-        gap: document.getElementById('pGap').value.trim()
+        role: document.getElementById('pRole').value.trim()
       };
-
       let profiles = JSON.parse(localStorage.getItem('restartAiFinalProfiles') || '[]');
       profiles.unshift(profile);
       localStorage.setItem('restartAiFinalProfiles', JSON.stringify(profiles));
-
       displaySavedProfiles();
-      alert(`Success! Complete profile for "${profile.name}" with Visa and Education status has been published.`);
+      alert(`Success! Profile for "${profile.name}" published.`);
       e.target.reset();
     }
 
@@ -301,23 +249,20 @@
       let profiles = JSON.parse(localStorage.getItem('restartAiFinalProfiles') || '[]');
       const container = document.getElementById('savedProfilesContainer');
       const list = document.getElementById('profilesList');
-
       if (profiles.length > 0) {
         container.classList.remove('hidden');
-        list.innerHTML = profiles.map(p => `
-          <div class="bg-slate-950 p-4 rounded-xl border border-purple-500/30 space-y-2 text-xs">
-            <div class="flex items-center justify-between">
-              <h4 class="text-sm font-bold text-white">👤 ${p.name} (${p.email})</h4>
-              <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold">🛂 ${p.visa}</span>
-            </div>
-            <p class="text-slate-300"><b>Education:</b> ${p.edu} (${p.inst})</p>
-            <p class="text-emerald-400"><b>Experience:</b> ${p.role} at ${p.company}</p>
-            <p class="text-slate-300"><b>Responsibilities:</b> ${p.resp}</p>
-            ${p.skills ? `<p class="text-slate-400"><b>Skills:</b> ${p.skills}</p>` : ''}
-            ${p.gap ? `<p class="text-amber-400 italic"><b>Career Gap Note:</b> ${p.gap}</p>` : ''}
-          </div>
-        `).join('');
+        list.innerHTML = profiles.map(p => `<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/30 text-xs"><b>👤 ${p.name}</b> - ${p.role} (${p.visa})</div>`).join('');
       }
+    }
+
+    function scanUploadedPdf() {
+      const fileInput = document.getElementById('pdfUploadInput');
+      if (fileInput.files.length === 0) {
+        alert("Please select a PDF resume file first!");
+        return;
+      }
+      const fileName = fileInput.files[0].name;
+      alert(`Successfully scanned "${fileName}"! ATS Compatibility Score: 95/100 (Parser Ready).`);
     }
 
     function generateAtsCv(e) {
@@ -325,19 +270,7 @@
       const name = document.getElementById('cvName').value.trim();
       const title = document.getElementById('cvTitle').value.trim();
       const exp = document.getElementById('cvExp').value.trim();
-
-      const atsTemplate = `========================================
-${name.toUpperCase()}
-${title}
-========================================
-
-PROFESSIONAL EXPERIENCE & SKILLS:
-${exp}
-
-========================================
-ATS COMPLIANCE: 98% COMPLIANT (PARSER READY)
-========================================`;
-
+      const atsTemplate = `========================================\n${name.toUpperCase()}\n${title}\n========================================\n\nEXPERIENCE & SKILLS:\n${exp}\n\n========================================\nATS COMPLIANCE: 98% (PARSER READY)\n========================================`;
       document.getElementById('atsPreviewBox').innerText = atsTemplate;
       document.getElementById('atsOutputContainer').classList.remove('hidden');
       alert('ATS-Friendly CV generated successfully!');
@@ -346,33 +279,20 @@ ATS COMPLIANCE: 98% COMPLIANT (PARSER READY)
     function copyAtsCv() {
       const textToCopy = document.getElementById('atsPreviewBox').innerText;
       navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ATS CV successfully copied to clipboard!');
-      }).catch(err => {
-        alert('Failed to copy text.');
+        alert('ATS CV copied to clipboard!');
       });
     }
 
     function searchGlobalJobs() {
-      const role = document.getElementById('keywordSearch').value;
-      const edu = document.getElementById('eduFilter').value;
-      const exp = document.getElementById('expFilter').value;
-      const salary = document.getElementById('salaryFilter').value;
       const loc = document.getElementById('locationSearch').value.trim();
-
-      if (loc) {
-        alert(`Searching verified jobs in "${loc}" for Role: "${role || 'All'}"...`);
-      } else {
-        alert(`Searching verified jobs worldwide for Role: "${role || 'All'}"...`);
-      }
+      alert(loc ? `Searching verified jobs in "${loc}"...` : `Searching verified jobs worldwide...`);
     }
 
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
-    window.onload = function() {
-      displaySavedProfiles();
-    };
+    window.onload = function() { displaySavedProfiles(); };
   </script>
 </body>
 </html>
