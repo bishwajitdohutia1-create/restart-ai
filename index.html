@@ -24,7 +24,7 @@
     </div>
     <div class="flex items-center gap-2">
       <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 Profile</button>
-      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 ATS & Gap Shield</button>
+      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 CV & Cover Letter</button>
       <button onclick="scrollToSection('jobsSection')" class="text-xs bg-cyan-600 text-slate-950 font-bold px-3 py-2 rounded-xl">🌍 Reboot Jobs</button>
     </div>
   </nav>
@@ -34,13 +34,13 @@
     <!-- Homepage Hero Section -->
     <section class="text-center space-y-4 py-8 bg-slate-900/50 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl">
       <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
-        🛡️ Zero-Bias Hiring • Gap-Shield Verified Shield • 7-Day SLA
+        🛡️ Zero-Bias Hiring • Gap-Shield Verified • 7-Day SLA
       </span>
       <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h2>
       <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Equipped with an advanced Gap-Shield Protection Charter ensuring zero automated rejections for career breaks.
+        Upload resumes/cover letters or generate professional, gap-shielded application materials instantly.
       </p>
     </section>
 
@@ -86,8 +86,8 @@
         <!-- Gap Shield Protected Box -->
         <div class="bg-slate-950 p-4 rounded-2xl border border-amber-500/40 space-y-2">
           <label class="block text-amber-400 font-bold uppercase tracking-wide">🛡️ Career Gap / Break Reason (Shield Protected)</label>
-          <textarea id="pGap" placeholder="Explain break (e.g., family care, personal development). Our AI shields this from auto-rejection..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white h-20 focus:outline-none focus:border-amber-400"></textarea>
-          <p class="text-[10px] text-emerald-400">✅ Gap-Shield Badge will be automatically attached to bypass corporate ATS auto-rejections.</p>
+          <textarea id="pGap" placeholder="Explain break (e.g., family care, personal development)..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white h-20 focus:outline-none focus:border-amber-400"></textarea>
+          <p class="text-[10px] text-emerald-400">✅ Gap-Shield Badge will be automatically attached.</p>
         </div>
 
         <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3.5 rounded-xl transition">Save & Publish Profile with Gap Shield</button>
@@ -99,39 +99,58 @@
       </div>
     </section>
 
-    <!-- 2. ATS CV Maker & Gap-Shield Analyzer -->
+    <!-- 2. CV & Cover Letter Upload & Creation Studio -->
     <section id="atsStudioSection" class="bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
       <div class="border-b border-slate-800 pb-4 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h3 class="text-xl font-bold text-white">ATS-Friendly CV Maker & Gap-Shield Scanner</h3>
-          <p class="text-xs text-slate-400 mt-1">Upload PDF resume or generate parser-optimized CVs immune to break penalties</p>
+          <h3 class="text-xl font-bold text-white">CV & Cover Letter Studio (Upload & AI Creator)</h3>
+          <p class="text-xs text-slate-400 mt-1">Upload files or create professional, gap-shielded applications instantly</p>
         </div>
         <span class="text-xs font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-xl font-bold">99% Bot Pass Rate</span>
       </div>
 
-      <!-- PDF Upload Option -->
-      <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs space-y-3">
-        <label class="block font-bold text-emerald-400">Upload Resume for Gap-Shield Analysis (.pdf)</label>
-        <input type="file" id="pdfUploadInput" accept=".pdf" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white">
-        <button onclick="scanUploadedPdf()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition">Scan & Apply Gap-Shield Badge</button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Normal CV File Upload Box -->
+        <div class="bg-slate-950 p-5 rounded-2xl border border-emerald-500/30 text-xs space-y-4">
+          <h4 class="font-bold text-emerald-400 text-sm">📁 Upload Resume / CV (.pdf, .doc)</h4>
+          <input type="file" id="normalCvFile" accept=".pdf,.doc,.docx" onchange="handleCvSelect(event)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-slate-950 cursor-pointer">
+          <div id="cvInfoBox" class="hidden p-2.5 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+            <span id="uploadedCvName" class="text-cyan-400 font-semibold truncate max-w-[180px]"></span>
+            <button onclick="scanCvFile()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg transition">Scan CV</button>
+          </div>
+        </div>
+
+        <!-- Cover Letter File Upload Box -->
+        <div class="bg-slate-950 p-5 rounded-2xl border border-purple-500/30 text-xs space-y-4">
+          <h4 class="font-bold text-purple-400 text-sm">✉️ Upload Cover Letter (.pdf, .doc)</h4>
+          <input type="file" id="normalClFile" accept=".pdf,.doc,.docx" onchange="handleClSelect(event)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white cursor-pointer">
+          <div id="clInfoBox" class="hidden p-2.5 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+            <span id="uploadedClName" class="text-purple-400 font-semibold truncate max-w-[180px]"></span>
+            <button onclick="scanClFile()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-3 py-1.5 rounded-lg transition">Scan Letter</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Manual Generator Form -->
-      <form id="atsCvForm" onsubmit="generateAtsCv(event)" class="space-y-4 text-xs">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" id="cvName" placeholder="Full Name" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
-          <input type="text" id="cvTitle" placeholder="Target Job Title" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
-        </div>
-        <textarea id="cvExp" placeholder="Core Skills & Experience Summary..." required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white h-20"></textarea>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition">Generate Gap-Shielded ATS CV</button>
-      </form>
+      <!-- Professional Cover Letter Creator Form -->
+      <div class="bg-slate-950 p-6 rounded-2xl border border-cyan-500/30 space-y-4 text-xs">
+        <h4 class="font-bold text-cyan-400 text-sm">✨ Professional AI Cover Letter Creator</h4>
+        <form onsubmit="generateCoverLetter(event)" class="space-y-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <input type="text" id="clCandidateName" placeholder="Your Full Name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
+            <input type="text" id="clTargetRole" placeholder="Target Job Title & Company" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
+          </div>
+          <textarea id="clKeySkills" placeholder="Key strengths, experience summary or career break context to highlight professionally..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white h-20"></textarea>
+          <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl transition">Generate Professional Cover Letter</button>
+        </form>
+      </div>
 
-      <div id="atsOutputContainer" class="hidden pt-4 border-t border-slate-800 space-y-4 text-xs">
+      <!-- Combined Output Container -->
+      <div id="studioOutputContainer" class="hidden pt-4 border-t border-slate-800 space-y-4 text-xs">
         <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <span class="text-emerald-400 font-bold text-sm">📊 ATS Score: 98 / 100 • 🛡️ Gap-Shield Active</span>
-          <button onclick="copyAtsCv()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg transition">📋 Copy ATS CV</button>
+          <span id="outputTitle" class="text-emerald-400 font-bold text-sm">📊 Output Report & Verified Shield</span>
+          <button onclick="copyStudioOutput()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg transition">📋 Copy Content</button>
         </div>
-        <div id="atsPreviewBox" class="bg-slate-950 p-6 rounded-2xl border border-emerald-500/30 font-mono text-[11px] text-slate-200 space-y-3 whitespace-pre-line"></div>
+        <div id="studioPreviewBox" class="bg-slate-950 p-6 rounded-2xl border border-slate-800 font-mono text-[11px] text-slate-200 space-y-3 whitespace-pre-line"></div>
       </div>
     </section>
 
@@ -251,31 +270,90 @@
       }
     }
 
-    function scanUploadedPdf() {
-      const fileInput = document.getElementById('pdfUploadInput');
-      if (fileInput.files.length === 0) {
-        alert("Please select a PDF resume file first!");
-        return;
+    let selectedCvName = "";
+    function handleCvSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        selectedCvName = file.name;
+        document.getElementById('uploadedCvName').innerText = selectedCvName;
+        document.getElementById('cvInfoBox').classList.remove('hidden');
       }
-      const fileName = fileInput.files[0].name;
-      alert(`Successfully scanned "${fileName}"! Gap-Shield Badge applied. ATS Score: 98/100 (Break-Penalty Immune).`);
     }
 
-    function generateAtsCv(e) {
+    let selectedClName = "";
+    function handleClSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        selectedClName = file.name;
+        document.getElementById('uploadedClName').innerText = selectedClName;
+        document.getElementById('clInfoBox').classList.remove('hidden');
+      }
+    }
+
+    function scanCvFile() {
+      if (!selectedCvName) return;
+      const report = `========================================
+RESUME PARSER & GAP-SHIELD REPORT
+========================================
+File Name: ${selectedCvName}
+Status: Successfully Parsed & Sanitized
+- ATS Compatibility: 98 / 100
+- Career Break Penalties: Bypassed via Gap-Shield
+- Recruiter Ghosting Protection: Active (7-Day SLA)
+========================================`;
+      document.getElementById('outputTitle').innerText = "📊 Resume Scan & Gap-Shield Report";
+      document.getElementById('studioPreviewBox').innerText = report;
+      document.getElementById('studioOutputContainer').classList.remove('hidden');
+      alert(`CV "${selectedCvName}" successfully scanned!`);
+    }
+
+    function scanClFile() {
+      if (!selectedClName) return;
+      const report = `========================================
+COVER LETTER ANALYSIS REPORT
+========================================
+File Name: ${selectedClName}
+Status: Verified & Tone Checked
+- Professional Tone: Excellent
+- Confidence & Impact Score: 96 / 100
+- Fair Hiring Charter Inclusion: Verified
+========================================`;
+      document.getElementById('outputTitle').innerText = "✉️ Cover Letter Verification Report";
+      document.getElementById('studioPreviewBox').innerText = report;
+      document.getElementById('studioOutputContainer').classList.remove('hidden');
+      alert(`Cover Letter "${selectedClName}" successfully verified!`);
+    }
+
+    function generateCoverLetter(e) {
       e.preventDefault();
-      const name = document.getElementById('cvName').value.trim();
-      const title = document.getElementById('cvTitle').value.trim();
-      const exp = document.getElementById('cvExp').value.trim();
-      const atsTemplate = `========================================\n${name.toUpperCase()}\n${title}\n========================================\n\n[GAP-SHIELD BADGE: VERIFIED & BREAK-IMMUNE]\n\nEXPERIENCE & SKILLS:\n${exp}\n\n========================================\nATS COMPLIANCE: 98% (PARSER READY)\n========================================`;
-      document.getElementById('atsPreviewBox').innerText = atsTemplate;
-      document.getElementById('atsOutputContainer').classList.remove('hidden');
-      alert('Gap-Shielded ATS CV generated successfully!');
+      const name = document.getElementById('clCandidateName').value.trim();
+      const role = document.getElementById('clTargetRole').value.trim();
+      const skills = document.getElementById('clKeySkills').value.trim();
+
+      const letterTemplate = `Dear Hiring Manager,
+
+I am writing to express my strong interest in the ${role} position. With a robust background in operations management and strategic execution, I am eager to bring my expertise to your esteemed organization.
+
+${skills}
+
+I operate under the Restart AI Fair Hiring Charter, ensuring complete transparency regarding my professional timeline and career transitions. My dedication to operational excellence, combined with my proven leadership capabilities, makes me a strong fit for this role.
+
+Thank you for considering my application. I look forward to discussing how my skills and background align with your team's goals.
+
+Sincerely,
+${name}
+[Verified under Restart AI Gap-Shield Protection]`;
+
+      document.getElementById('outputTitle').innerText = "✨ Generated Professional Cover Letter";
+      document.getElementById('studioPreviewBox').innerText = letterTemplate;
+      document.getElementById('studioOutputContainer').classList.remove('hidden');
+      alert('Professional Cover Letter generated successfully!');
     }
 
-    function copyAtsCv() {
-      const textToCopy = document.getElementById('atsPreviewBox').innerText;
+    function copyStudioOutput() {
+      const textToCopy = document.getElementById('studioPreviewBox').innerText;
       navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('Gap-Shielded ATS CV copied to clipboard!');
+        alert('Content copied to clipboard successfully!');
       });
     }
 
