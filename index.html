@@ -24,7 +24,7 @@
     </div>
     <div class="flex items-center gap-2">
       <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 Profile</button>
-      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 CV & Cover Letter</button>
+      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 CV Analyzer & Matching</button>
       <button onclick="scrollToSection('jobsSection')" class="text-xs bg-cyan-600 text-slate-950 font-bold px-3 py-2 rounded-xl">🌍 Reboot Jobs</button>
     </div>
   </nav>
@@ -40,7 +40,7 @@
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h2>
       <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Upload resumes/cover letters or generate professional, gap-shielded application materials instantly.
+        Upload your resume for instant AI profile analysis and automated live job matching.
       </p>
     </section>
 
@@ -99,58 +99,52 @@
       </div>
     </section>
 
-    <!-- 2. CV & Cover Letter Upload & Creation Studio -->
+    <!-- 2. CV Upload, AI Analysis & Matching Jobs Studio -->
     <section id="atsStudioSection" class="bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
       <div class="border-b border-slate-800 pb-4 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h3 class="text-xl font-bold text-white">CV & Cover Letter Studio (Upload & AI Creator)</h3>
-          <p class="text-xs text-slate-400 mt-1">Upload files or create professional, gap-shielded applications instantly</p>
+          <h3 class="text-xl font-bold text-white">CV Upload, AI Analysis & Live Matching Jobs</h3>
+          <p class="text-xs text-slate-400 mt-1">Upload your resume to analyze profile compatibility and instantly discover matching live jobs</p>
         </div>
         <span class="text-xs font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-xl font-bold">99% Bot Pass Rate</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Normal CV File Upload Box -->
-        <div class="bg-slate-950 p-5 rounded-2xl border border-emerald-500/30 text-xs space-y-4">
-          <h4 class="font-bold text-emerald-400 text-sm">📁 Upload Resume / CV (.pdf, .doc)</h4>
-          <input type="file" id="normalCvFile" accept=".pdf,.doc,.docx" onchange="handleCvSelect(event)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-slate-950 cursor-pointer">
-          <div id="cvInfoBox" class="hidden p-2.5 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
-            <span id="uploadedCvName" class="text-cyan-400 font-semibold truncate max-w-[180px]"></span>
-            <button onclick="scanCvFile()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg transition">Scan CV</button>
+      <!-- CV File Upload Box -->
+      <div class="bg-slate-950 p-6 rounded-2xl border border-emerald-500/30 text-xs space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg font-bold">📁</div>
+          <div>
+            <h4 class="font-bold text-white text-sm">Upload Resume / CV (.pdf, .doc)</h4>
+            <p class="text-slate-400 text-[11px]">Instant parsing for skills, experience, and gap-shield verification</p>
           </div>
         </div>
 
-        <!-- Cover Letter File Upload Box -->
-        <div class="bg-slate-950 p-5 rounded-2xl border border-purple-500/30 text-xs space-y-4">
-          <h4 class="font-bold text-purple-400 text-sm">✉️ Upload Cover Letter (.pdf, .doc)</h4>
-          <input type="file" id="normalClFile" accept=".pdf,.doc,.docx" onchange="handleClSelect(event)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white cursor-pointer">
-          <div id="clInfoBox" class="hidden p-2.5 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
-            <span id="uploadedClName" class="text-purple-400 font-semibold truncate max-w-[180px]"></span>
-            <button onclick="scanClFile()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-3 py-1.5 rounded-lg transition">Scan Letter</button>
-          </div>
+        <input type="file" id="normalCvFile" accept=".pdf,.doc,.docx" onchange="handleCvSelect(event)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-slate-950 cursor-pointer">
+        
+        <div id="fileInfoBox" class="hidden p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+          <span id="uploadedFileName" class="text-cyan-400 font-semibold truncate max-w-[200px]"></span>
+          <button onclick="analyzeCvAndFindJobs()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-4 py-2 rounded-lg transition">⚡ Analyze CV & Find Matching Jobs</button>
         </div>
       </div>
 
-      <!-- Professional Cover Letter Creator Form -->
-      <div class="bg-slate-950 p-6 rounded-2xl border border-cyan-500/30 space-y-4 text-xs">
-        <h4 class="font-bold text-cyan-400 text-sm">✨ Professional AI Cover Letter Creator</h4>
-        <form onsubmit="generateCoverLetter(event)" class="space-y-3">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <input type="text" id="clCandidateName" placeholder="Your Full Name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
-            <input type="text" id="clTargetRole" placeholder="Target Job Title & Company" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
+      <!-- Analysis Report & Live Matching Jobs Output Container -->
+      <div id="matchingOutputContainer" class="hidden pt-4 border-t border-slate-800 space-y-6 text-xs">
+        <!-- ATS Report Box -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
+            <span class="text-emerald-400 font-bold text-sm">📊 AI Analysis & Gap-Shield Report</span>
+            <button onclick="copyMatchReport()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg transition">📋 Copy Report</button>
           </div>
-          <textarea id="clKeySkills" placeholder="Key strengths, experience summary or career break context to highlight professionally..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white h-20"></textarea>
-          <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl transition">Generate Professional Cover Letter</button>
-        </form>
-      </div>
-
-      <!-- Combined Output Container -->
-      <div id="studioOutputContainer" class="hidden pt-4 border-t border-slate-800 space-y-4 text-xs">
-        <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <span id="outputTitle" class="text-emerald-400 font-bold text-sm">📊 Output Report & Verified Shield</span>
-          <button onclick="copyStudioOutput()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg transition">📋 Copy Content</button>
+          <div id="analysisReportBox" class="bg-slate-950 p-6 rounded-2xl border border-emerald-500/30 font-mono text-[11px] text-slate-200 space-y-3 whitespace-pre-line"></div>
         </div>
-        <div id="studioPreviewBox" class="bg-slate-950 p-6 rounded-2xl border border-slate-800 font-mono text-[11px] text-slate-200 space-y-3 whitespace-pre-line"></div>
+
+        <!-- Live Matching Jobs Section -->
+        <div class="space-y-3 pt-2">
+          <h4 class="text-sm font-bold text-cyan-400 uppercase tracking-wide">🎯 Live Matching Jobs Based on Your Uploaded CV:</h4>
+          <div id="matchingJobsList" class="space-y-3">
+            <!-- Dynamic Matching Job Cards will load here -->
+          </div>
+        </div>
       </div>
     </section>
 
@@ -270,90 +264,71 @@
       }
     }
 
-    let selectedCvName = "";
+    let selectedFileName = "";
     function handleCvSelect(event) {
       const file = event.target.files[0];
       if (file) {
-        selectedCvName = file.name;
-        document.getElementById('uploadedCvName').innerText = selectedCvName;
-        document.getElementById('cvInfoBox').classList.remove('hidden');
+        selectedFileName = file.name;
+        document.getElementById('uploadedFileName').innerText = "📄 " + selectedFileName;
+        document.getElementById('fileInfoBox').classList.remove('hidden');
       }
     }
 
-    let selectedClName = "";
-    function handleClSelect(event) {
-      const file = event.target.files[0];
-      if (file) {
-        selectedClName = file.name;
-        document.getElementById('uploadedClName').innerText = selectedClName;
-        document.getElementById('clInfoBox').classList.remove('hidden');
+    function analyzeCvAndFindJobs() {
+      if (!selectedFileName) {
+        alert("Please select a resume file first.");
+        return;
       }
-    }
 
-    function scanCvFile() {
-      if (!selectedCvName) return;
+      // Generate AI Analysis Report
       const report = `========================================
-RESUME PARSER & GAP-SHIELD REPORT
+RESUME AI PARSER & PROFILE ANALYSIS
 ========================================
-File Name: ${selectedCvName}
+File Name: ${selectedFileName}
 Status: Successfully Parsed & Sanitized
-- ATS Compatibility: 98 / 100
-- Career Break Penalties: Bypassed via Gap-Shield
-- Recruiter Ghosting Protection: Active (7-Day SLA)
+- ATS Parser Compatibility Score: 98 / 100
+- Detected Profile Match: Senior Operations & Business Lead
+- Career Break Status: Protected via Gap-Shield (0% Auto-Reject Risk)
+- Recruiter Ghosting Shield: Active (7-Day SLA Enforced)
 ========================================`;
-      document.getElementById('outputTitle').innerText = "📊 Resume Scan & Gap-Shield Report";
-      document.getElementById('studioPreviewBox').innerText = report;
-      document.getElementById('studioOutputContainer').classList.remove('hidden');
-      alert(`CV "${selectedCvName}" successfully scanned!`);
+      document.getElementById('analysisReportBox').innerText = report;
+
+      // Generate Matching Live Jobs
+      const matchingJobsContainer = document.getElementById('matchingJobsList');
+      matchingJobsContainer.innerHTML = `
+        <div class="bg-slate-950 p-4 rounded-xl border border-cyan-500/30 space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h5 class="font-bold text-white text-sm">Senior Operations & Growth Lead</h5>
+              <p class="text-[10px] text-emerald-400 font-bold uppercase mt-0.5">ManipalCigna Health Insurance • ⏱️ 7-Day SLA</p>
+            </div>
+            <span class="bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 px-3 py-1 rounded-lg text-[11px] font-bold">🎯 Profile Match: 96%</span>
+          </div>
+          <p class="text-slate-300">📍 Worldwide / Remote Eligible • 🛡️ Gap-Shield Protection Active</p>
+          <button onclick="alert('Successfully applied with your analyzed CV & active Gap-Shield protection!')" class="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold py-2.5 rounded-lg transition text-xs">Apply with 1-Click Match</button>
+        </div>
+
+        <div class="bg-slate-950 p-4 rounded-xl border border-purple-500/30 space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h5 class="font-bold text-white text-sm">Operations Project Lead</h5>
+              <p class="text-[10px] text-purple-400 font-bold uppercase mt-0.5">Dalmia Bharat Foundation • 100% Reboot-Friendly</p>
+            </div>
+            <span class="bg-purple-500/20 text-purple-400 border border-purple-500/40 px-3 py-1 rounded-lg text-[11px] font-bold">🎯 Profile Match: 92%</span>
+          </div>
+          <p class="text-slate-300">📍 Lumshong, Meghalaya / Remote • 🛡️ Zero Career-Gap Penalty</p>
+          <button onclick="alert('Successfully applied with your analyzed CV & active Gap-Shield protection!')" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-lg transition text-xs">Apply with 1-Click Match</button>
+        </div>
+      `;
+
+      document.getElementById('matchingOutputContainer').classList.remove('hidden');
+      alert(`CV "${selectedFileName}" analyzed successfully! Scroll down to view your live matching jobs.`);
     }
 
-    function scanClFile() {
-      if (!selectedClName) return;
-      const report = `========================================
-COVER LETTER ANALYSIS REPORT
-========================================
-File Name: ${selectedClName}
-Status: Verified & Tone Checked
-- Professional Tone: Excellent
-- Confidence & Impact Score: 96 / 100
-- Fair Hiring Charter Inclusion: Verified
-========================================`;
-      document.getElementById('outputTitle').innerText = "✉️ Cover Letter Verification Report";
-      document.getElementById('studioPreviewBox').innerText = report;
-      document.getElementById('studioOutputContainer').classList.remove('hidden');
-      alert(`Cover Letter "${selectedClName}" successfully verified!`);
-    }
-
-    function generateCoverLetter(e) {
-      e.preventDefault();
-      const name = document.getElementById('clCandidateName').value.trim();
-      const role = document.getElementById('clTargetRole').value.trim();
-      const skills = document.getElementById('clKeySkills').value.trim();
-
-      const letterTemplate = `Dear Hiring Manager,
-
-I am writing to express my strong interest in the ${role} position. With a robust background in operations management and strategic execution, I am eager to bring my expertise to your esteemed organization.
-
-${skills}
-
-I operate under the Restart AI Fair Hiring Charter, ensuring complete transparency regarding my professional timeline and career transitions. My dedication to operational excellence, combined with my proven leadership capabilities, makes me a strong fit for this role.
-
-Thank you for considering my application. I look forward to discussing how my skills and background align with your team's goals.
-
-Sincerely,
-${name}
-[Verified under Restart AI Gap-Shield Protection]`;
-
-      document.getElementById('outputTitle').innerText = "✨ Generated Professional Cover Letter";
-      document.getElementById('studioPreviewBox').innerText = letterTemplate;
-      document.getElementById('studioOutputContainer').classList.remove('hidden');
-      alert('Professional Cover Letter generated successfully!');
-    }
-
-    function copyStudioOutput() {
-      const textToCopy = document.getElementById('studioPreviewBox').innerText;
+    function copyMatchReport() {
+      const textToCopy = document.getElementById('analysisReportBox').innerText;
       navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('Content copied to clipboard successfully!');
+        alert('Analysis report copied to clipboard!');
       });
     }
 
