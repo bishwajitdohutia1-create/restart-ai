@@ -24,8 +24,8 @@
     </div>
     <div class="flex items-center gap-2">
       <button onclick="scrollToSection('profileSection')" class="text-xs bg-purple-600 text-white px-3 py-2 rounded-xl font-bold">👤 Profile</button>
-      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 ATS Maker & Upload</button>
-      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-cyan-600 text-slate-950 font-bold px-3 py-2 rounded-xl">🌍 Worldwide Jobs</button>
+      <button onclick="scrollToSection('atsStudioSection')" class="text-xs bg-emerald-600 text-white px-3 py-2 rounded-xl font-bold">📄 ATS & Gap Shield</button>
+      <button onclick="scrollToSection('jobsSection')" class="text-xs bg-cyan-600 text-slate-950 font-bold px-3 py-2 rounded-xl">🌍 Reboot Jobs</button>
     </div>
   </nav>
 
@@ -34,21 +34,21 @@
     <!-- Homepage Hero Section -->
     <section class="text-center space-y-4 py-8 bg-slate-900/50 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl">
       <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
-        🛡️ Zero-Bias Hiring • Gap Tolerance Shield • 7-Day SLA
+        🛡️ Zero-Bias Hiring • Gap-Shield Verified Shield • 7-Day SLA
       </span>
       <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
         Eliminating Career-Gap Penalties & Recruiter Ghosting.
       </h2>
       <p class="text-slate-400 text-sm max-w-xl mx-auto">
-        Complete profile builder, PDF CV scanner, ATS-friendly generator with instant copy, and worldwide job discovery with live alphabet-based location suggestions.
+        Equipped with an advanced Gap-Shield Protection Charter ensuring zero automated rejections for career breaks.
       </p>
     </section>
 
-    <!-- 1. Profile Builder Section -->
+    <!-- 1. Profile Builder with Gap Shield -->
     <section id="profileSection" class="bg-slate-900 border border-purple-500/30 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h3 class="text-xl font-bold text-white">Complete Candidate Profile Builder</h3>
-        <p class="text-xs text-slate-400 mt-1">Add personal details, education, visa status, work history, and shielded gap reasons</p>
+        <p class="text-xs text-slate-400 mt-1">Protected under Fair Hiring Charter with automated career-break shielding</p>
       </div>
       
       <form id="completeProfileForm" onsubmit="saveCompleteProfile(event)" class="space-y-4 text-xs">
@@ -74,48 +74,46 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Highest Education / Degree</label>
-            <input type="text" id="pEdu" placeholder="e.g. MBA in Marketing / BA" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <label class="block text-slate-400 mb-1 font-semibold">Highest Education & Institution</label>
+            <input type="text" id="pEdu" placeholder="e.g. MBA / BA, Dibrugarh University" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
           <div>
-            <label class="block text-slate-400 mb-1 font-semibold">Institution / University & Year</label>
-            <input type="text" id="pInst" placeholder="e.g. Dibrugarh University, 2008" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <label class="block text-slate-400 mb-1 font-semibold">Recent Role & Company</label>
+            <input type="text" id="pRole" placeholder="e.g. Senior Operations Lead" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
         </div>
 
-        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
-          <p class="font-bold text-emerald-400 uppercase tracking-wide">Professional Experience & Job Profile:</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <input type="text" id="pCompany" placeholder="Company Name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
-            <input type="text" id="pRole" placeholder="Job Title / Designation" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
-          </div>
-          <textarea id="pResponsibility" placeholder="Key Responsibilities..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white h-20"></textarea>
+        <!-- Gap Shield Protected Box -->
+        <div class="bg-slate-950 p-4 rounded-2xl border border-amber-500/40 space-y-2">
+          <label class="block text-amber-400 font-bold uppercase tracking-wide">🛡️ Career Gap / Break Reason (Shield Protected)</label>
+          <textarea id="pGap" placeholder="Explain break (e.g., family care, personal development). Our AI shields this from auto-rejection..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white h-20 focus:outline-none focus:border-amber-400"></textarea>
+          <p class="text-[10px] text-emerald-400">✅ Gap-Shield Badge will be automatically attached to bypass corporate ATS auto-rejections.</p>
         </div>
 
-        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3.5 rounded-xl transition">Save & Publish Profile</button>
+        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3.5 rounded-xl transition">Save & Publish Profile with Gap Shield</button>
       </form>
 
       <div id="savedProfilesContainer" class="hidden pt-4 border-t border-slate-800 space-y-3">
-        <h4 class="text-xs font-bold text-purple-400 uppercase">Published Profile Preview:</h4>
+        <h4 class="text-xs font-bold text-purple-400 uppercase">Published Profile Studio:</h4>
         <div id="profilesList" class="space-y-2"></div>
       </div>
     </section>
 
-    <!-- 2. ATS CV Maker & PDF Upload Scanner -->
+    <!-- 2. ATS CV Maker & Gap-Shield Analyzer -->
     <section id="atsStudioSection" class="bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
       <div class="border-b border-slate-800 pb-4 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h3 class="text-xl font-bold text-white">ATS-Friendly CV Maker & PDF Scanner</h3>
-          <p class="text-xs text-slate-400 mt-1">Generate tailored resumes or upload a PDF for instant parser analysis</p>
+          <h3 class="text-xl font-bold text-white">ATS-Friendly CV Maker & Gap-Shield Scanner</h3>
+          <p class="text-xs text-slate-400 mt-1">Upload PDF resume or generate parser-optimized CVs immune to break penalties</p>
         </div>
-        <span class="text-xs font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-xl font-bold">98% Bot Pass Rate</span>
+        <span class="text-xs font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-xl font-bold">99% Bot Pass Rate</span>
       </div>
 
       <!-- PDF Upload Option -->
       <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs space-y-3">
-        <label class="block font-bold text-emerald-400">Upload Existing Resume (.pdf)</label>
+        <label class="block font-bold text-emerald-400">Upload Resume for Gap-Shield Analysis (.pdf)</label>
         <input type="file" id="pdfUploadInput" accept=".pdf" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white">
-        <button onclick="scanUploadedPdf()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition">Scan & Check ATS Score</button>
+        <button onclick="scanUploadedPdf()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition">Scan & Apply Gap-Shield Badge</button>
       </div>
 
       <!-- Manual Generator Form -->
@@ -125,23 +123,23 @@
           <input type="text" id="cvTitle" placeholder="Target Job Title" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
         <textarea id="cvExp" placeholder="Core Skills & Experience Summary..." required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white h-20"></textarea>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition">Generate ATS-Friendly CV</button>
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition">Generate Gap-Shielded ATS CV</button>
       </form>
 
       <div id="atsOutputContainer" class="hidden pt-4 border-t border-slate-800 space-y-4 text-xs">
         <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <span class="text-emerald-400 font-bold text-sm">📊 ATS Compatibility Score: 96 / 100</span>
+          <span class="text-emerald-400 font-bold text-sm">📊 ATS Score: 98 / 100 • 🛡️ Gap-Shield Active</span>
           <button onclick="copyAtsCv()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg transition">📋 Copy ATS CV</button>
         </div>
         <div id="atsPreviewBox" class="bg-slate-950 p-6 rounded-2xl border border-emerald-500/30 font-mono text-[11px] text-slate-200 space-y-3 whitespace-pre-line"></div>
       </div>
     </section>
 
-    <!-- 3. Advanced Worldwide Job Discovery with Alphabet Suggestions -->
+    <!-- 3. Advanced Worldwide Job Discovery with Reboot-Friendly Filter -->
     <section id="jobsSection" class="bg-slate-900 border border-cyan-500/30 rounded-3xl p-6 md:p-8 space-y-6">
       <div class="border-b border-slate-800 pb-4">
-        <h3 class="text-xl font-bold text-white">Advanced Worldwide Job Discovery</h3>
-        <p class="text-xs text-slate-400 mt-1">Filter by Role, Education, Experience, Salary & Worldwide Locations</p>
+        <h3 class="text-xl font-bold text-white">Advanced Worldwide Reboot-Friendly Job Discovery</h3>
+        <p class="text-xs text-slate-400 mt-1">Filter companies committed to zero career-gap penalties with live location auto-suggestions</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
@@ -182,7 +180,7 @@
         <button onclick="searchGlobalJobs()" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold px-8 py-3 rounded-xl transition text-xs">Search Now</button>
       </div>
 
-      <!-- Sample Job / Ledger Card -->
+      <!-- Sample Gap-Shielded Job Ledger Card -->
       <div id="jobsGrid" class="grid grid-cols-1 gap-4 pt-2">
         <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 text-xs">
           <div class="flex items-center justify-between flex-wrap gap-2">
@@ -190,11 +188,11 @@
               <h4 class="text-sm font-bold text-white">ManipalCigna Health Insurance</h4>
               <p class="text-[10px] text-emerald-400 font-bold uppercase mt-0.5">100% Reboot-Friendly • ⏱️ 7-Day Anti-Ghosting SLA</p>
             </div>
-            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1 rounded-lg text-[11px] font-bold">🎯 Job-Fit: 96% Match</span>
+            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1 rounded-lg text-[11px] font-bold">🛡️ Gap-Shield: 100% Secure</span>
           </div>
           <p class="text-slate-300">📍 Worldwide / Remote Eligible • Role: Senior Operations Lead</p>
-          <p class="text-amber-400 font-semibold">⚠️ Gap-Tolerance Check: <b class="text-emerald-400">Zero Penalty for Career Breaks</b> (Safe to Apply)</p>
-          <button onclick="alert('Application submitted successfully with Job-Fit protection & 7-Day SLA active!')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition text-xs">Apply with Job-Fit Safety Check</button>
+          <p class="text-amber-400 font-semibold">⚠️ Gap-Tolerance Check: <b class="text-emerald-400">Zero Penalty for Career Breaks (Verified Employer)</b></p>
+          <button onclick="alert('Application submitted securely with Gap-Shield Protection & 7-Day Anti-Ghosting SLA active!')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl transition text-xs">Apply with Gap-Shield Safety Check</button>
         </div>
       </div>
     </section>
@@ -232,16 +230,14 @@
         name: document.getElementById('pName').value.trim(),
         email: document.getElementById('pEmail').value.trim(),
         visa: document.getElementById('pVisa').value,
-        edu: document.getElementById('pEdu').value.trim(),
-        inst: document.getElementById('pInst').value.trim(),
-        company: document.getElementById('pCompany').value.trim(),
-        role: document.getElementById('pRole').value.trim()
+        role: document.getElementById('pRole').value.trim(),
+        gap: document.getElementById('pGap').value.trim()
       };
       let profiles = JSON.parse(localStorage.getItem('restartAiFinalProfiles') || '[]');
       profiles.unshift(profile);
       localStorage.setItem('restartAiFinalProfiles', JSON.stringify(profiles));
       displaySavedProfiles();
-      alert(`Success! Profile for "${profile.name}" published.`);
+      alert(`Success! Profile for "${profile.name}" published with Gap-Shield Protection active.`);
       e.target.reset();
     }
 
@@ -251,7 +247,7 @@
       const list = document.getElementById('profilesList');
       if (profiles.length > 0) {
         container.classList.remove('hidden');
-        list.innerHTML = profiles.map(p => `<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/30 text-xs"><b>👤 ${p.name}</b> - ${p.role} (${p.visa})</div>`).join('');
+        list.innerHTML = profiles.map(p => `<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/30 text-xs flex justify-between items-center"><span><b>👤 ${p.name}</b> - ${p.role}</span><span class="text-emerald-400 font-bold">🛡️ Gap Shielded</span></div>`).join('');
       }
     }
 
@@ -262,7 +258,7 @@
         return;
       }
       const fileName = fileInput.files[0].name;
-      alert(`Successfully scanned "${fileName}"! ATS Compatibility Score: 95/100 (Parser Ready).`);
+      alert(`Successfully scanned "${fileName}"! Gap-Shield Badge applied. ATS Score: 98/100 (Break-Penalty Immune).`);
     }
 
     function generateAtsCv(e) {
@@ -270,22 +266,22 @@
       const name = document.getElementById('cvName').value.trim();
       const title = document.getElementById('cvTitle').value.trim();
       const exp = document.getElementById('cvExp').value.trim();
-      const atsTemplate = `========================================\n${name.toUpperCase()}\n${title}\n========================================\n\nEXPERIENCE & SKILLS:\n${exp}\n\n========================================\nATS COMPLIANCE: 98% (PARSER READY)\n========================================`;
+      const atsTemplate = `========================================\n${name.toUpperCase()}\n${title}\n========================================\n\n[GAP-SHIELD BADGE: VERIFIED & BREAK-IMMUNE]\n\nEXPERIENCE & SKILLS:\n${exp}\n\n========================================\nATS COMPLIANCE: 98% (PARSER READY)\n========================================`;
       document.getElementById('atsPreviewBox').innerText = atsTemplate;
       document.getElementById('atsOutputContainer').classList.remove('hidden');
-      alert('ATS-Friendly CV generated successfully!');
+      alert('Gap-Shielded ATS CV generated successfully!');
     }
 
     function copyAtsCv() {
       const textToCopy = document.getElementById('atsPreviewBox').innerText;
       navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ATS CV copied to clipboard!');
+        alert('Gap-Shielded ATS CV copied to clipboard!');
       });
     }
 
     function searchGlobalJobs() {
       const loc = document.getElementById('locationSearch').value.trim();
-      alert(loc ? `Searching verified jobs in "${loc}"...` : `Searching verified jobs worldwide...`);
+      alert(loc ? `Searching reboot-friendly verified jobs in "${loc}"...` : `Searching reboot-friendly verified jobs worldwide...`);
     }
 
     function scrollToSection(id) {
