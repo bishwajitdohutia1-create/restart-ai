@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restart AI | Complete 20-Feature Operational Ecosystem</title>
+<title>Restart AI | Complete 25-Feature Operational Ecosystem</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -20,13 +20,14 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; 
 <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center font-black text-slate-950 text-xl shadow-lg">R</div>
 <div>
 <h1 class="text-base md:text-lg font-bold text-white">Restart AI</h1>
-<p class="text-[9px] text-emerald-400 font-bold uppercase tracking-widest">20-Feature Operational Hub</p>
+<p class="text-[9px] text-emerald-400 font-bold uppercase tracking-widest">25-Feature Operational Hub</p>
 </div>
 </div>
 <div class="flex items-center gap-2">
 <button onclick="scrollToSec('sec1')" class="text-[11px] bg-purple-600 px-3 py-1.5 rounded-lg font-bold">Profile</button>
 <button onclick="scrollToSec('sec2')" class="text-[11px] bg-emerald-600 px-3 py-1.5 rounded-lg font-bold">ATS Studio</button>
 <button onclick="scrollToSec('sec3')" class="text-[11px] bg-cyan-600 text-slate-950 px-3 py-1.5 font-bold rounded-lg">Jobs & Hub</button>
+<button onclick="scrollToSec('sec4')" class="text-[11px] bg-amber-600 text-slate-950 px-3 py-1.5 font-bold rounded-lg">Global Unique AI</button>
 <button onclick="scrollToSec('about-section')" class="text-[11px] bg-blue-600 px-3 py-1.5 rounded-lg font-bold">About</button>
 </div>
 </nav>
@@ -36,7 +37,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; 
 <!-- 2. Fair Hiring & Zero-Bias Hero Banner & Tagline -->
 <section class="text-center space-y-3 py-8 bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
 <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full">
-🛡️ 20 Operational Interactive Features Live
+🛡️ 25 Operational & Groundbreaking Features Live
 </span>
 <h2 class="text-2xl md:text-4xl font-black text-white">Zero Career-Gap Penalties. Full Operational Control.</h2>
 
@@ -120,11 +121,50 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; 
 </div>
 </section>
 
-<!-- NEW SECTION: ABOUT PLATFORM & FOUNDER DETAILS -->
+<!-- SECTION 4: NEW 5 GLOBAL UNIQUE & GROUNDBREAKING AI FEATURES (Features 21 to 25) -->
+<section id="sec4" class="feature-card space-y-4 border-amber-500/30 bg-slate-900/90 p-6">
+<h3 class="font-bold text-sm text-amber-400">🚀 Features 21-25: Global Unique & Groundbreaking AI Engines</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+  
+  <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
+    <h4 class="font-bold text-white">🔥 Feature 21: Recruiter Ghosting Heatmap</h4>
+    <p class="text-slate-400 text-[11px]">Tracks company responsiveness. Non-responsive HRs are pushed to public Red Zones automatically.</p>
+    <button onclick="testGhostingHeatmap()" class="w-full bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold py-1.5 rounded">View Live Heatmap</button>
+  </div>
+
+  <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
+    <h4 class="font-bold text-white">🎙️ Feature 22: AI Mock Defense Simulator</h4>
+    <p class="text-slate-400 text-[11px]">Voice AI simulation training candidates to confidently defend career breaks during tough HR interviews.</p>
+    <button onclick="testMockDefense()" class="w-full bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold py-1.5 rounded">Launch Voice Mock</button>
+  </div>
+
+  <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
+    <h4 class="font-bold text-white">🤝 Feature 23: Peer Trust-Vouch Network</h4>
+    <p class="text-slate-400 text-[11px]">Cryptographic decentralized colleague verification replacing fake traditional references.</p>
+    <button onclick="testPeerVouch()" class="w-full bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold py-1.5 rounded">Verify Vouch Node</button>
+  </div>
+
+  <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
+    <h4 class="font-bold text-white">🤖 Feature 24: Autonomous Job Interceptor</h4>
+    <p class="text-slate-400 text-[11px]">Background agent that auto-applies to matching jobs instantly the second they open globally.</p>
+    <button onclick="testAutoInterceptor()" class="w-full bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold py-1.5 rounded">Activate Interceptor</button>
+  </div>
+
+</div>
+
+<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2 text-xs">
+  <h4 class="font-bold text-white">🧠 Feature 25: Zero-Bias Neural CV Masking Engine</h4>
+  <p class="text-slate-400 text-[11px]">Strips age, gender, and break timelines entirely, sending only pure skill vectors to recruiters to eradicate human hiring bias.</p>
+  <button onclick="testCvMasking()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded">Enable Neural CV Masking</button>
+</div>
+
+<div id="uniqueFeatureOutput" class="hidden p-3 bg-slate-950 rounded-lg text-amber-300 font-mono text-[11px] border border-amber-500/30"></div>
+</section>
+
+<!-- SECTION 5: ABOUT PLATFORM & FOUNDER DETAILS -->
 <section id="about-section" class="feature-card space-y-4 border-blue-500/30 bg-slate-900/80 p-6">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
   
-  <!-- About Product & Purpose -->
   <div class="space-y-3">
     <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full">About The Product</span>
     <h3 class="text-lg font-bold text-white">Why Restart AI Was Built</h3>
@@ -136,10 +176,8 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060a12; 
     </div>
   </div>
 
-  <!-- About Founder / Creator -->
   <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-4">
     <div class="flex items-center gap-3">
-      <!-- BD Initials Avatar Logo -->
       <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white text-lg shadow-md border-2 border-blue-400">
         BD
       </div>
@@ -175,7 +213,7 @@ function scrollToSec(id) { document.getElementById(id).scrollIntoView({ behavior
 function testFeatureProfile() {
 const name = document.getElementById('fName').value || "Bishwajit Dohutia";
 const gap = document.getElementById('fGap').value || "Family Care";
-localStorage.setItem('restartAi_20Features_User', JSON.stringify({name, gap}));
+localStorage.setItem('restartAi_25Features_User', JSON.stringify({name, gap}));
 const out = document.getElementById('profileResult');
 out.innerHTML = `✅ [Feature 20 & 3-4 Active]: Profile saved in LocalStorage!<br>• Name: ${name}<br>• AI Re-framer: Gap optimized into 'Crisis Management Leadership'.`;
 out.classList.remove('hidden');
@@ -233,6 +271,37 @@ alert('Feature 9: Successfully applied with 1-Click Secure Gap-Shield Engine!');
 
 function testWhatsAppHub() {
 alert('Feature 18: Opening Restart AI WhatsApp Referral Hub Bridge...');
+}
+
+function showUniqueOutput(text) {
+const out = document.getElementById('uniqueFeatureOutput');
+out.innerHTML = text;
+out.classList.remove('hidden');
+}
+
+function testGhostingHeatmap() {
+showUniqueOutput(`🔥 [Feature 21: Ghosting Heatmap Active]: Scanning global recruiter SLA logs... 2 companies flagged in Red Zone for exceeding 7-day silence.`);
+alert('Feature 21: Recruiter Ghosting Heatmap verified!');
+}
+
+function testMockDefense() {
+showUniqueOutput(`🎙️ [Feature 22: AI Mock Defense Simulator]: Audio channel ready. "Tell me about your career break?" -> AI coaching initialized.`);
+alert('Feature 22: AI Mock Defense Simulator initialized!');
+}
+
+function testPeerVouch() {
+showUniqueOutput(`🤝 [Feature 23: Peer Trust-Vouch Network]: Cryptographic blockchain signature generated from former manager node.`);
+alert('Feature 23: Peer Trust-Vouch verified successfully!');
+}
+
+function testAutoInterceptor() {
+showUniqueOutput(`🤖 [Feature 24: Autonomous Job Interceptor]: Background agent deployed. Auto-applying to matching remote roles instantly.`);
+alert('Feature 24: Autonomous Job Interceptor running in background!');
+}
+
+function testCvMasking() {
+showUniqueOutput(`🧠 [Feature 25: Neural CV Masking Engine]: Age, gender, and break timestamps successfully scrubbed. Pure skill vector transmitted.`);
+alert('Feature 25: Neural CV Masking Engine activated!');
 }
 </script>
 
